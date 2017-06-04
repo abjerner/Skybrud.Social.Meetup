@@ -39,16 +39,16 @@ namespace Skybrud.Social.Meetup.Models.Events {
         #region Constructors
 
         private MeetupEvent(JObject obj) : base(obj) {
-            Created = obj.GetInt64("created", ParseUnixTimestamp);
+            Created = obj.HasValue("created") ? obj.GetInt64("created", ParseUnixTimestamp) : null;
             Id = obj.GetString("id");
             Name = obj.GetString("name");
-            Time = obj.GetInt64("time", ParseUnixTimestamp);
-            Updated = obj.GetInt64("updated", ParseUnixTimestamp);
+            Time = obj.HasValue("time") ? obj.GetInt64("time", ParseUnixTimestamp) : null;
+            Updated = obj.HasValue("updated") ? obj.GetInt64("updated", ParseUnixTimestamp) : null;
             Group = obj.GetObject("group", MeetupGroup.Parse);
             Venue = obj.GetObject("venue", MeetupVenue.Parse);
             Link = obj.GetString("link");
             Description = obj.GetString("description");
-            Visibility = obj.GetEnum<MeetupEventVisibility>("visibility");
+            Visibility = obj.HasValue("visiblity") ? obj.GetEnum<MeetupEventVisibility>("visibility") : MeetupEventVisibility.Unspecified;
         }
 
         #endregion

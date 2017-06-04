@@ -15,6 +15,10 @@ namespace Skybrud.Social.Meetup.Endpoints {
             Service = service;
         }
 
+        public MeetupGetEventResponse GetEvent(string urlname, string eventId) {
+            return MeetupGetEventResponse.ParseResponse(Raw.GetEvent(urlname, eventId));
+        }
+
         public MeetupGetEventsResponse GetEvents(string urlname) {
             return MeetupGetEventsResponse.ParseResponse(Raw.GetEvents(urlname));
         }
