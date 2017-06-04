@@ -1,0 +1,10 @@
+{
+  "title": "Skybrud.Social.Meetup",
+  "description": "Service implementation for the Meetup.com API.",
+  "company": "Skybrud.dk",
+  "product": "Skybrud.Social.Meetup",
+  "copyright": "Copyright © 2017",
+  "version": "1.0.0.0",
+  "informationalVersion": "1.0.0-beta001",
+  "fileVersion": "1.0.0.0"
+}
