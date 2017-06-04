@@ -64,10 +64,18 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// </summary>
         public MeetupGroupPhoto GroupPhoto { get; private set; }
 
+        public bool HasGroupPhoto {
+            get { return GroupPhoto != null; }
+        }
+
         /// <summary>
         /// Gets the primary photo of the group.
         /// </summary>
         public MeetupGroupPhoto KeyPhoto { get; private set; }
+
+        public bool HasKeyPhoto {
+            get { return KeyPhoto != null; }
+        }
 
         #endregion
 

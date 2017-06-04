@@ -3,6 +3,9 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Meetup.Models.Groups {
     
+    /// <summary>
+    /// Class representing a photo of a group.
+    /// </summary>
     public class MeetupGroupPhoto : MeetupObject {
 
         #region Properties

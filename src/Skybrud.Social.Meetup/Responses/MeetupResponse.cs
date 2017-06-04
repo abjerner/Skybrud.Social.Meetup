@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Net;
-using Newtonsoft.Json.Linq;
 using Skybrud.Social.Http;
-using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Meetup.Responses {
 
     /// <summary>
-    /// Class representing a response from the Meetup Graph API.
+    /// Class representing a response from the Meetup API.
     /// </summary>
     public class MeetupResponse : SocialResponse {
 
@@ -41,7 +39,7 @@ namespace Skybrud.Social.Meetup.Responses {
     }
 
     /// <summary>
-    /// Class representing a response from the Meetup Graph API.
+    /// Class representing a response from the Meetup API.
     /// </summary>
     public class MeetupResponse<T> : MeetupResponse {
 

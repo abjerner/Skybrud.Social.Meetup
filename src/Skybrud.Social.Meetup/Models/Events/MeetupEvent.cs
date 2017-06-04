@@ -6,6 +6,12 @@ using Skybrud.Social.Meetup.Models.Venues;
 
 namespace Skybrud.Social.Meetup.Models.Events {
     
+    /// <summary>
+    /// Class representing a Meetup.com event.
+    /// </summary>
+    /// <see>
+    ///     <cref>https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#get</cref>
+    /// </see>
     public class MeetupEvent : MeetupObject {
 
         #region Properties

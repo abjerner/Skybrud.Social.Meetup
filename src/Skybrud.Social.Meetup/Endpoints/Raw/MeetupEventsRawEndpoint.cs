@@ -5,19 +5,31 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
     
     public class MeetupEventsRawEndpoint {
 
+        #region Properties
+
         public MeetupClient Client { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public MeetupEventsRawEndpoint(MeetupClient client) {
             Client = client;
         }
 
+        #endregion
+
+        #region Member methods
+
         /// <summary>
-        /// 
+        /// Gets information about the event matching the specified group <paramref name="urlname"/> and <paramref name="eventId"/>.
         /// </summary>
         /// <param name="urlname">The URL name of the parent group.</param>
         /// <param name="eventId">The ID of the event.</param>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        /// <see cref="https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#get"/>
+        /// <see>
+        ///     <cref>https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#get</cref>
+        /// </see>
         public SocialHttpResponse GetEvent(string urlname, string eventId) {
             if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException("urlname");
             if (String.IsNullOrWhiteSpace(eventId)) throw new ArgumentNullException("eventId");
@@ -25,7 +37,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         }
 
         /// <summary>
-        /// 
+        /// Gets a list of events of the group with the specified <paramref name="urlname"/>.
         /// </summary>
         /// <param name="urlname">The URL name/slug of the parent group.</param>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
@@ -37,6 +49,8 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
             if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException("urlname");
             return Client.DoHttpGetRequest("https://api.meetup.com/" + urlname + "/events");
         }
+
+        #endregion
 
     }
 

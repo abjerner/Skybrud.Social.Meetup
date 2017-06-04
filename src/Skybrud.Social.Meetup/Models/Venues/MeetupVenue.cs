@@ -4,28 +4,61 @@ using Skybrud.Essentials.Locations;
 
 namespace Skybrud.Social.Meetup.Models.Venues {
     
+    /// <summary>
+    /// Class describing a venue of an event.
+    /// </summary>
     public class MeetupVenue : MeetupObject, ILocation {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the numeric ID of the venue.
+        /// </summary>
         public long Id { get; private set; }
 
+        /// <summary>
+        /// Gets the name of the venue.
+        /// </summary>
         public string Name { get; private set; }
 
+        /// <summary>
+        /// Gets the latitude of the event.
+        /// </summary>
         public double Latitude { get; private set; }
 
+        /// <summary>
+        /// Gets the longitude of the event.
+        /// </summary>
         public double Longitude { get; private set; }
 
+        /// <summary>
+        /// Gets the first line of the address of the venue.
+        /// </summary>
         public string Address1 { get; private set; }
 
+        /// <summary>
+        /// Gets the second line of the address of the venue.
+        /// </summary>
         public string Address2 { get; private set; }
 
+        /// <summary>
+        /// Gets the third line of the address of the venue.
+        /// </summary>
         public string Address3 { get; private set; }
 
+        /// <summary>
+        /// Gets the city of the venue.
+        /// </summary>
         public string City { get; private set; }
 
+        /// <summary>
+        /// Gets the country of the venue.
+        /// </summary>
         public string Country { get; private set; }
 
+        /// <summary>
+        /// Gets localized country name of the venue.
+        /// </summary>
         public string LocalizedCountryName { get; private set; }
 
         #endregion
