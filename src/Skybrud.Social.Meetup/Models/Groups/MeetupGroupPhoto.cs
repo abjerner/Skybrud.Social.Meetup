@@ -13,32 +13,32 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the numeric ID of the photo.
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; }
 
         /// <summary>
         /// Gets the URL for a full sized version of the photo.
         /// </summary>
-        public string HighresLink { get; private set; }
+        public string HighresLink { get; }
         
         /// <summary>
         /// Gets the URL for a standard sized version of the photo.
         /// </summary>
-        public string PhotoLink { get; private set; }
+        public string PhotoLink { get; }
         
         /// <summary>
         /// Gets the URL for a thumbnail sized version of the photo.
         /// </summary>
-        public string ThumbLink { get; private set; }
+        public string ThumbLink { get; }
         
         /// <summary>
         /// Gets the type of the photo.
         /// </summary>
-        public MeetupGroupPhotoType Type { get; private set; }
+        public MeetupGroupPhotoType Type { get; }
         
         /// <summary>
         /// Gets a base url that can be use to construct a photo url from its components.
         /// </summary>
-        public string BaseUrl { get; private set; }
+        public string BaseUrl { get; }
 
         #endregion
 

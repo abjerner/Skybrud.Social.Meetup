@@ -18,64 +18,58 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the numeric ID of the group.
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; }
 
         /// <summary>
         /// Gets the name of the group.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the URL of the page about the group at meetup.com.
         /// </summary>
-        public string Link { get; private set; }
+        public string Link { get; }
 
         /// <summary>
         /// Gets the URL name/slug of the group.
         /// </summary>
-        public string UrlName { get; private set; }
+        public string UrlName { get; }
 
         /// <summary>
         /// Gets a short description about the group.
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get; }
 
         /// <summary>
         /// The latitude of the group.
         /// </summary>
-        public double Latitude { get; private set; }
+        public double Latitude { get; }
 
         /// <summary>
         /// The longitude of the group.
         /// </summary>
-        public double Longitude { get; private set; }
+        public double Longitude { get; }
 
         /// <summary>
         /// Gets the next event of the group, or <code>null</code> if there are no upcoming events.
         /// </summary>
-        public MeetupEvent NextEvent { get; private set; }
+        public MeetupEvent NextEvent { get; }
 
-        public bool HasNextEvent {
-            get { return NextEvent != null; }
-        }
+        public bool HasNextEvent => NextEvent != null;
 
         /// <summary>
         /// Gets the group photo of the group.
         /// </summary>
-        public MeetupGroupPhoto GroupPhoto { get; private set; }
+        public MeetupGroupPhoto GroupPhoto { get; }
 
-        public bool HasGroupPhoto {
-            get { return GroupPhoto != null; }
-        }
+        public bool HasGroupPhoto => GroupPhoto != null;
 
         /// <summary>
         /// Gets the primary photo of the group.
         /// </summary>
-        public MeetupGroupPhoto KeyPhoto { get; private set; }
+        public MeetupGroupPhoto KeyPhoto { get; }
 
-        public bool HasKeyPhoto {
-            get { return KeyPhoto != null; }
-        }
+        public bool HasKeyPhoto => KeyPhoto != null;
 
         #endregion
 

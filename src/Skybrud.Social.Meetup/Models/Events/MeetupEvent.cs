@@ -16,29 +16,27 @@ namespace Skybrud.Social.Meetup.Models.Events {
 
         #region Properties
 
-        public EssentialsDateTime Created { get; private set; }
+        public EssentialsDateTime Created { get; }
 
-        public string Id { get; private set; }
+        public string Id { get; }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
-        public EssentialsDateTime Time { get; private set; }
+        public EssentialsDateTime Time { get; }
 
-        public EssentialsDateTime Updated { get; private set; }
+        public EssentialsDateTime Updated { get; }
 
-        public MeetupGroup Group { get; private set; }
+        public MeetupGroup Group { get; }
 
-        public MeetupVenue Venue { get; private set; }
+        public MeetupVenue Venue { get; }
 
-        public bool HasVenue {
-            get { return Venue != null; }
-        }
+        public bool HasVenue => Venue != null;
 
-        public string Link { get; private set; }
+        public string Link { get; }
 
-        public string Description { get; private set; }
+        public string Description { get; }
 
-        public MeetupEventVisibility Visibility { get; private set; }
+        public MeetupEventVisibility Visibility { get; }
 
         #endregion
 

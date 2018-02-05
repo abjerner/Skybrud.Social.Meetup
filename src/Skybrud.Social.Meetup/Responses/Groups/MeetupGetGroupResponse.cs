@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Http;
+﻿using System;
+using Skybrud.Social.Http;
 using Skybrud.Social.Meetup.Models.Groups;
 
 namespace Skybrud.Social.Meetup.Responses.Groups {
@@ -30,7 +31,8 @@ namespace Skybrud.Social.Meetup.Responses.Groups {
         /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
         /// <returns>An instance of <see cref="MeetupGetGroupResponse"/> representing the response.</returns>
         public static MeetupGetGroupResponse ParseResponse(SocialHttpResponse response) {
-            return response == null ? null : new MeetupGetGroupResponse(response);
+            if (response == null) throw new ArgumentNullException(nameof(response));
+            return new MeetupGetGroupResponse(response);
         }
 
         #endregion

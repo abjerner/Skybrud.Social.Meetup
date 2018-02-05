@@ -31,8 +31,8 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         ///     <cref>https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#get</cref>
         /// </see>
         public SocialHttpResponse GetEvent(string urlname, string eventId) {
-            if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException("urlname");
-            if (String.IsNullOrWhiteSpace(eventId)) throw new ArgumentNullException("eventId");
+            if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
+            if (String.IsNullOrWhiteSpace(eventId)) throw new ArgumentNullException(nameof(eventId));
             return Client.DoHttpGetRequest("https://api.meetup.com/" + urlname + "/events/" + eventId);
         }
 
@@ -46,7 +46,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         ///     <cref>https://www.meetup.com/meetup_api/docs/:urlname/events/#listresponse</cref>
         /// </see>
         public SocialHttpResponse GetEvents(string urlname) {
-            if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException("urlname");
+            if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
             return Client.DoHttpGetRequest("https://api.meetup.com/" + urlname + "/events");
         }
 

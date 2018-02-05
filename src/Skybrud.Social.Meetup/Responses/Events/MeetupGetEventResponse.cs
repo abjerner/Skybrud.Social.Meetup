@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Http;
+﻿using System;
+using Skybrud.Social.Http;
 using Skybrud.Social.Meetup.Models.Events;
 
 namespace Skybrud.Social.Meetup.Responses.Events {
@@ -30,7 +31,8 @@ namespace Skybrud.Social.Meetup.Responses.Events {
         /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
         /// <returns>An instance of <see cref="MeetupGetEventResponse"/> representing the response.</returns>
         public static MeetupGetEventResponse ParseResponse(SocialHttpResponse response) {
-            return response == null ? null : new MeetupGetEventResponse(response);
+            if (response == null) throw new ArgumentNullException(nameof(response));
+            return new MeetupGetEventResponse(response);
         }
 
         #endregion

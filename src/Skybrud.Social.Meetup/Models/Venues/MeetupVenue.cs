@@ -14,52 +14,52 @@ namespace Skybrud.Social.Meetup.Models.Venues {
         /// <summary>
         /// Gets the numeric ID of the venue.
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; }
 
         /// <summary>
         /// Gets the name of the venue.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the latitude of the event.
         /// </summary>
-        public double Latitude { get; private set; }
+        public double Latitude { get; }
 
         /// <summary>
         /// Gets the longitude of the event.
         /// </summary>
-        public double Longitude { get; private set; }
+        public double Longitude { get; }
 
         /// <summary>
         /// Gets the first line of the address of the venue.
         /// </summary>
-        public string Address1 { get; private set; }
+        public string Address1 { get; }
 
         /// <summary>
         /// Gets the second line of the address of the venue.
         /// </summary>
-        public string Address2 { get; private set; }
+        public string Address2 { get; }
 
         /// <summary>
         /// Gets the third line of the address of the venue.
         /// </summary>
-        public string Address3 { get; private set; }
+        public string Address3 { get; }
 
         /// <summary>
         /// Gets the city of the venue.
         /// </summary>
-        public string City { get; private set; }
+        public string City { get; }
 
         /// <summary>
         /// Gets the country of the venue.
         /// </summary>
-        public string Country { get; private set; }
+        public string Country { get; }
 
         /// <summary>
         /// Gets localized country name of the venue.
         /// </summary>
-        public string LocalizedCountryName { get; private set; }
+        public string LocalizedCountryName { get; }
 
         #endregion
 
