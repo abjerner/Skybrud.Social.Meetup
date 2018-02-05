@@ -1,89 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{575AA450-63E8-4C50-B743-9645BE070E71}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>netstandard1.3;net45;net46</TargetFrameworks>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <RunBuildTargets>true</RunBuildTargets>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <RootNamespace>Skybrud.Social.Meetup</RootNamespace>
-    <AssemblyName>Skybrud.Social.Meetup</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <Version>1.0.0-beta002</Version>
+    <Company>Skybrud.dk a/s</Company>
+    <Product>Skybrud.Social</Product>
+    <Authors>Anders Bjerner</Authors>
+    <Copyright>Copyright © 2017</Copyright>
+    <Description>Service implementation for the Meetup.com API.</Description>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Facebook</RepositoryUrl>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Skybrud.Essentials, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Skybrud.Essentials.1.0.8\lib\net45\Skybrud.Essentials.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Skybrud.Social.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Skybrud.Social.Core.1.0.0-beta9\lib\net45\Skybrud.Social.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Endpoints\MeetupEventsEndpoint.cs" />
-    <Compile Include="Endpoints\MeetupGroupsEndpoint.cs" />
-    <Compile Include="Endpoints\Raw\MeetupEventsRawEndpoint.cs" />
-    <Compile Include="Endpoints\Raw\MeetupGroupsRawEndpoint.cs" />
-    <Compile Include="MeetupService.cs" />
-    <Compile Include="MeetupClient.cs" />
-    <Compile Include="Models\Groups\MeetupGroupPhotoType.cs" />
-    <Compile Include="Models\Groups\MeetupGroupPhoto.cs" />
-    <Compile Include="Models\Events\MeetupEvent.cs" />
-    <Compile Include="Models\Events\MeetupEventVisibility.cs" />
-    <Compile Include="Models\Groups\MeetupGroup.cs" />
-    <Compile Include="Models\MeetupObject.cs" />
-    <Compile Include="Models\Venues\MeetupVenue.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Responses\Events\MeetupGetEventResponse.cs" />
-    <Compile Include="Responses\Events\MeetupGetEventsResponse.cs" />
-    <Compile Include="Responses\Groups\MeetupGetGroupResponse.cs" />
-    <Compile Include="Responses\MeetupResponse.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Properties\AssemblyInfo.json" />
-    <None Include="Skybrud.Social.Meetup.nuspec" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)build\UpdateAssemblyInfoJson.exe" "$(ProjectPath)" "$(TargetPath)"</PostBuildEvent>
+    <PackageTags>Facebook, Graph, API, Skybrud, Social, OAuth, JSON</PackageTags>
+    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Facebook/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Facebook</PackageProjectUrl>
+    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <DefineConstants>NET_STANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+    <DefineConstants>NET_FRAMEWORK</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Skybrud.Social.Core" Version="1.0.3" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.3|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.3\Skybrud.Social.Meetup.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <DocumentationFile>bin\Release\net45\Skybrud.Social.Meetup.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+    <DocumentationFile>bin\Release\net46\Skybrud.Social.Meetup.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='netstandard1.3|true'">
+    <Exec Command="&quot;$(SolutionDir)build/Skybrud.Social.PreBuildTool.exe&quot; /date=2017-06-03 /projectPath=&quot;$(ProjectPath)&quot;" />
   </Target>
-  <Target Name="AfterBuild">
+
+  <Target Name="PostBuild" BeforeTargets="PostBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='net46|true'">
+    <Exec Command="&quot;$(SolutionDir)build\UpdateAssemblyInfoJson.exe&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
-  -->
+
 </Project>
