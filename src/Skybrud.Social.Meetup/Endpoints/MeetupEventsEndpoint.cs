@@ -1,4 +1,5 @@
 ﻿using Skybrud.Social.Meetup.Endpoints.Raw;
+using Skybrud.Social.Meetup.Options.Events;
 using Skybrud.Social.Meetup.Responses.Events;
 
 namespace Skybrud.Social.Meetup.Endpoints {
@@ -46,6 +47,15 @@ namespace Skybrud.Social.Meetup.Endpoints {
         /// <returns>An instance of <see cref="MeetupGetEventsResponse"/> representing the response.</returns>
         public MeetupGetEventsResponse GetEvents(string urlname) {
             return MeetupGetEventsResponse.ParseResponse(Raw.GetEvents(urlname));
+        }
+
+        /// <summary>
+        /// Gets a list of events of the group matching the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The options for the request to the API.</param>
+        /// <returns>An instance of <see cref="MeetupGetEventsResponse"/> representing the response.</returns>
+        public MeetupGetEventsResponse GetEvents(MeetupGetEventsOptions options) {
+            return MeetupGetEventsResponse.ParseResponse(Raw.GetEvents(options));
         }
 
         #endregion
