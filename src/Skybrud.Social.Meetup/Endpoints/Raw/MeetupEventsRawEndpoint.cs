@@ -1,5 +1,6 @@
 ﻿using System;
 using Skybrud.Social.Http;
+using Skybrud.Social.Meetup.OAuth;
 
 namespace Skybrud.Social.Meetup.Endpoints.Raw {
     
@@ -7,13 +8,13 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
 
         #region Properties
 
-        public MeetupClient Client { get; set; }
+        public IMeetupOAuthClient Client { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public MeetupEventsRawEndpoint(MeetupClient client) {
+        public MeetupEventsRawEndpoint(IMeetupOAuthClient client) {
             Client = client;
         }
 
