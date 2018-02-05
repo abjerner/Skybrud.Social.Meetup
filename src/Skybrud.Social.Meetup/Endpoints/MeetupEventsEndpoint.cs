@@ -15,9 +15,7 @@ namespace Skybrud.Social.Meetup.Endpoints {
         /// <summary>
         /// Gets a reference to the raw endpoint.
         /// </summary>
-        public MeetupEventsRawEndpoint Raw {
-            get { return Service.Client.Events; }
-        }
+        public MeetupEventsRawEndpoint Raw => Service.Client.Events;
 
         #endregion
 
