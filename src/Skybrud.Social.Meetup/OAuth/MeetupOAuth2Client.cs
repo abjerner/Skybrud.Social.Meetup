@@ -1,7 +1,9 @@
 using System;
 using Skybrud.Essentials.Common;
 using Skybrud.Social.Http;
+using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.Meetup.Endpoints.Raw;
+using Skybrud.Social.Meetup.Responses.Authentication;
 using Skybrud.Social.Meetup.Scopes;
 
 namespace Skybrud.Social.Meetup.OAuth {
@@ -98,9 +100,49 @@ namespace Skybrud.Social.Meetup.OAuth {
                 throw new ArgumentNullException(nameof(state), "A valid state should be specified as it is part of the security of OAuth 2.0.");
             }
 
+            IHttpQueryString query = new SocialHttpQueryString();
+            query.Add("client_id", ClientId);
+            query.Add("redirect_uri", RedirectUri);
+            query.Add("response_type", "code");
+            query.Add("state", state);
+
+            string s = String.Join("+", scope ?? new string[0]);
+            if (!String.IsNullOrWhiteSpace(s)) query.Add("scope", s);
+
             // Generate the authorization URL
-            return $"https://secure.meetup.com/oauth2/authorize?client_id={ClientId}&redirect_uri={RedirectUri}&state={state}&scope={String.Join("+", scope)}";
+            return "https://secure.meetup.com/oauth2/authorize?" + query;
         
+        }
+
+
+        /// <summary>
+        /// Exchanges the specified authorization code for an access token.
+        /// </summary>
+        /// <param name="authCode">The authorization code received from the Meetup OAuth dialog.</param>
+        /// <returns>An instance of <see cref="MeetupTokenResponse"/> representing the response.</returns>
+        public MeetupTokenResponse GetAccessTokenFromAuthCode(string authCode) {
+
+            // Some validation
+            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException("ClientId");
+            if (String.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException("ClientSecret");
+            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException("RedirectUri");
+            if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
+
+            // Initialize the query string
+            SocialHttpPostData data = new SocialHttpPostData {
+                {"client_id", ClientId},
+                {"client_secret", ClientSecret},
+                {"grant_type", "authorization_code"},
+                {"redirect_uri", RedirectUri},
+                {"code", authCode}
+            };
+
+            // Make the call to the API
+            SocialHttpResponse response = SocialUtils.Http.DoHttpPostRequest("https://secure.meetup.com/oauth2/access", null, data);
+            
+            // Parse the response
+            return MeetupTokenResponse.ParseResponse(response);
+
         }
 
         #endregion
