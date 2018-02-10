@@ -145,6 +145,29 @@ namespace Skybrud.Social.Meetup.OAuth {
 
         }
 
+        /// <summary>
+        /// Makes sure we we update the request with then necessary authentication with either
+        /// <see cref="AccessToken"/> or <see cref="ApiKey"/> is specified.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <see>
+        ///     <cref>https://www.meetup.com/meetup_api/auth/#oauth2-resources</cref>
+        /// </see>
+        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+
+            base.PrepareHttpRequest(request);
+
+            // Append the scheme and host name if not already present
+            if (request.Url.StartsWith("/")) request.Url = "https://api.meetup.com" + request.Url;
+
+            if (!String.IsNullOrWhiteSpace(AccessToken)) {
+                request.Headers.Authorization = "Bearer " + AccessToken;
+            } else if (!String.IsNullOrWhiteSpace(ApiKey)) {
+                request.QueryString.Set("key", ApiKey);
+            }
+            
+        }
+
         #endregion
 
     }
