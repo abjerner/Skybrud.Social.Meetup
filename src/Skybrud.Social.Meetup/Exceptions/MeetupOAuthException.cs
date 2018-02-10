@@ -8,12 +8,6 @@ namespace Skybrud.Social.Meetup.Exceptions {
     /// </summary>
     public class MeetupOAuthException : MeetupHttpException {
 
-        #region Properties
-
-        public string Problem { get; }
-
-        #endregion
-
         #region Constructors
 
         /// <summary>

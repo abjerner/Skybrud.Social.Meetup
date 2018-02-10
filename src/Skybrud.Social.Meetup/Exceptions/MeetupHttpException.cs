@@ -1,4 +1,6 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Social.Meetup.Exceptions {
@@ -13,7 +15,22 @@ namespace Skybrud.Social.Meetup.Exceptions {
         /// <summary>
         /// Gets a reference to the underlying <see cref="SocialHttpResponse"/>.
         /// </summary>
-        public SocialHttpResponse Response { get; private set; }
+        public SocialHttpResponse Response { get; }
+
+        /// <summary>
+        /// Gets the details of the error, or <code>null</code> if not present.
+        /// </summary>
+        public string Details { get; protected set; }
+
+        /// <summary>
+        /// Gets the code of the error, or <code>null</code> if not present.
+        /// </summary>
+        public string Code { get; protected set; }
+
+        /// <summary>
+        /// Gets the problem of the error, or <code>null</code> if not present.
+        /// </summary>
+        public string Problem { get; protected set; }
 
         #endregion
 
@@ -24,7 +41,24 @@ namespace Skybrud.Social.Meetup.Exceptions {
         /// </summary>
         /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
         public MeetupHttpException(SocialHttpResponse response) : base("Invalid response received from the Meetup API (Status: " + (int) response.StatusCode + ")") {
+
             Response = response;
+            
+            switch (response.ContentType.Split(';')[0]) {
+
+                case "application/json":
+
+                    if (response.Body.StartsWith("{")) {
+                        JObject obj = JObject.Parse(response.Body);
+                        Details = obj.GetString("details");
+                        Code = obj.GetString("code");
+                        Problem = obj.GetString("problem");
+                    }
+
+                    break;
+
+            }
+
         }
 
         #endregion

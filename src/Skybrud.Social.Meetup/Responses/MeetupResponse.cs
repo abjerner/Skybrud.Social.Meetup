@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using Skybrud.Social.Http;
+using Skybrud.Social.Meetup.Exceptions;
 
 namespace Skybrud.Social.Meetup.Responses {
 
@@ -30,7 +31,7 @@ namespace Skybrud.Social.Meetup.Responses {
             // Skip error checking if the server responds with an OK status code
             if (response.StatusCode == HttpStatusCode.OK) return;
             
-            throw new Exception("OH NOES");
+            throw new MeetupHttpException(response);
 
         }
 
