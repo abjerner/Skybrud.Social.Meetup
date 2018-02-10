@@ -82,6 +82,20 @@ namespace Skybrud.Social.Meetup.OAuth {
 
         }
 
+        /// <summary>
+        /// Updates the request with missing information. For <see cref="MeetupOAuthClient"/> specifically, this means
+        /// that the scheme and host name of the API are prepended to the URL if not already present. 
+        /// </summary>
+        /// <param name="request">The instance of <see cref="SocialHttpRequest"/> representing the request.</param>
+        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+
+            base.PrepareHttpRequest(request);
+
+            // Append the scheme and host name if not already present
+            if (request.Url.StartsWith("/")) request.Url = "https://api.meetup.com" + request.Url;
+            
+        }
+
     }
 
 }
