@@ -48,6 +48,21 @@ namespace Skybrud.Social.Meetup.OAuth {
 
         /// <summary>
         /// Initializes a new instance based on the <paramref name="consumerKey"/>, <paramref name="consumerSecret"/>,
+        /// <paramref name="token"/> and <paramref name="tokenSecret"/>.
+        /// </summary>
+        /// <param name="consumerKey">The comsumer key of your application.</param>
+        /// <param name="consumerSecret">The consumer secret of your application.</param>
+        /// <param name="token">The access token of the user.</param>
+        /// <param name="tokenSecret">The access token secret of the user.</param>
+        public MeetupOAuthClient(string consumerKey, string consumerSecret, string token, string tokenSecret) : this() {
+            ConsumerKey = consumerKey;
+            ConsumerSecret = consumerSecret;
+            Token = token;
+            TokenSecret = tokenSecret;
+        }
+
+        /// <summary>
+        /// Initializes a new instance based on the <paramref name="consumerKey"/>, <paramref name="consumerSecret"/>,
         /// <paramref name="token"/>, <paramref name="tokenSecret"/> and <paramref name="callback"/>.
         /// </summary>
         /// <param name="consumerKey">The comsumer key of your application.</param>
