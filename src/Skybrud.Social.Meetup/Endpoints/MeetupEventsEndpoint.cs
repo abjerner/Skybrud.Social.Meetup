@@ -4,6 +4,9 @@ using Skybrud.Social.Meetup.Responses.Events;
 
 namespace Skybrud.Social.Meetup.Endpoints {
 
+    /// <summary>
+    /// Implementation of the <strong>Events</strong> endpoint.
+    /// </summary>
     public class MeetupEventsEndpoint {
 
         #region Properties

@@ -11,13 +11,26 @@ namespace Skybrud.Social.Meetup.Models.Authentication {
 
         #region Properties
 
-        public string AccessToken { get; private set; }
+        /// <summary>
+        /// Gets the token of the authenticated user.
+        /// </summary>
+        public string AccessToken { get; }
 
-        public string RefreshToken { get; private set; }
+        /// <summary>
+        /// Gets a refresh token that can be used to obtain a new access tokens. Refresh tokens are valid until the
+        /// user revokes access.
+        /// </summary>
+        public string RefreshToken { get; }
 
-        public string TokenType { get; private set; }
+        /// <summary>
+        /// Gets the type of the access token.
+        /// </summary>
+        public string TokenType { get; }
 
-        public TimeSpan ExpiresIn { get; private set; }
+        /// <summary>
+        /// Gets the remaining lifetime on the access token.
+        /// </summary>
+        public TimeSpan ExpiresIn { get; }
 
         #endregion
 

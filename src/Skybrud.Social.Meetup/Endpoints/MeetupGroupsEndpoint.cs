@@ -3,6 +3,9 @@ using Skybrud.Social.Meetup.Responses.Groups;
 
 namespace Skybrud.Social.Meetup.Endpoints {
 
+    /// <summary>
+    /// Implementation of the <strong>Groups</strong> endpoint.
+    /// </summary>
     public class MeetupGroupsEndpoint {
 
         #region Properties

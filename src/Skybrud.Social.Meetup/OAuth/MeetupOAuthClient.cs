@@ -29,6 +29,8 @@ namespace Skybrud.Social.Meetup.OAuth {
         public MeetupGroupsRawEndpoint Groups { get; }
 
         #endregion
+
+        #region Constructors
         
         /// <summary>
         /// Initializes a new instance with default options.
@@ -78,6 +80,9 @@ namespace Skybrud.Social.Meetup.OAuth {
             Callback = callback;
         }
 
+        #endregion
+
+        #region Member methods
 
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         protected override SocialHttpResponse GetRequestTokenResponse() {
@@ -110,6 +115,8 @@ namespace Skybrud.Social.Meetup.OAuth {
             if (request.Url.StartsWith("/")) request.Url = "https://api.meetup.com" + request.Url;
             
         }
+
+        #endregion
 
     }
 

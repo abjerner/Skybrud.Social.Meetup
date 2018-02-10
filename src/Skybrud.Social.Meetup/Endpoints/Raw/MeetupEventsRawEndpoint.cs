@@ -5,18 +5,24 @@ using Skybrud.Social.Meetup.OAuth;
 using Skybrud.Social.Meetup.Options.Events;
 
 namespace Skybrud.Social.Meetup.Endpoints.Raw {
-    
+
+    /// <summary>
+    /// Class representing the raw implementation of the <strong>Events</strong> endpoint.
+    /// </summary>
     public class MeetupEventsRawEndpoint {
 
         #region Properties
 
+        /// <summary>
+        /// Gets a reference to the OAuth client.
+        /// </summary>
         public IMeetupOAuthClient Client { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public MeetupEventsRawEndpoint(IMeetupOAuthClient client) {
+        internal MeetupEventsRawEndpoint(IMeetupOAuthClient client) {
             Client = client;
         }
 

@@ -55,6 +55,9 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// </summary>
         public MeetupEvent NextEvent { get; }
 
+        /// <summary>
+        /// Gets whether group has an upcoming event.
+        /// </summary>
         public bool HasNextEvent => NextEvent != null;
 
         /// <summary>
@@ -62,6 +65,9 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// </summary>
         public MeetupGroupPhoto GroupPhoto { get; }
 
+        /// <summary>
+        /// Gets whether the group has a group photo.
+        /// </summary>
         public bool HasGroupPhoto => GroupPhoto != null;
 
         /// <summary>
@@ -69,6 +75,9 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// </summary>
         public MeetupGroupPhoto KeyPhoto { get; }
 
+        /// <summary>
+        /// Gets whether the group has a key photo.
+        /// </summary>
         public bool HasKeyPhoto => KeyPhoto != null;
 
         #endregion

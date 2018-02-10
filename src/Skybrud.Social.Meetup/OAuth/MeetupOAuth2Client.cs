@@ -39,8 +39,14 @@ namespace Skybrud.Social.Meetup.OAuth {
 
         #endregion
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>Events</strong> endpoint.
+        /// </summary>
         public MeetupEventsRawEndpoint Events { get; }
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>Groups</strong> endpoint.
+        /// </summary>
         public MeetupGroupsRawEndpoint Groups { get; }
 
         /// <summary>
@@ -52,12 +58,12 @@ namespace Skybrud.Social.Meetup.OAuth {
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance with default options.
+        /// </summary>
         public MeetupOAuth2Client() {
-
-            // Endpoints
             Events = new MeetupEventsRawEndpoint(this);
             Groups = new MeetupGroupsRawEndpoint(this);
-        
         }
 
         #endregion

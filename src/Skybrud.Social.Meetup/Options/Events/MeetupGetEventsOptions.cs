@@ -21,23 +21,44 @@ namespace Skybrud.Social.Meetup.Options.Events {
         /// </summary>
         public int Page { get; set; }
 
+        /// <summary>
+        /// Gets or sets the offset.
+        /// </summary>
         public int Offset { get; set; }
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance with default options.
+        /// </summary>
         public MeetupGetEventsOptions() { }
 
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="urlname"/>.
+        /// </summary>
+        /// <param name="urlname">The URL name of the group.</param>
         public MeetupGetEventsOptions(string urlname) {
             UrlName = urlname;
         }
 
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="urlname"/> and <paramref name="page"/>.
+        /// </summary>
+        /// <param name="urlname">The URL name of the group.</param>
+        /// <param name="page">The page to be returned.</param>
         public MeetupGetEventsOptions(string urlname, int page) {
             UrlName = urlname;
             Page = page;
         }
 
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="urlname"/>, <paramref name="page"/> and <paramref name="offset"/>.
+        /// </summary>
+        /// <param name="urlname">The URL name of the group.</param>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="offset">The offset.</param>
         public MeetupGetEventsOptions(string urlname, int page, int offset) {
             UrlName = urlname;
             Page = page;
@@ -48,6 +69,9 @@ namespace Skybrud.Social.Meetup.Options.Events {
 
         #region Member methods
 
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
+        /// </summary>
         public IHttpQueryString GetQueryString() {
             
             IHttpQueryString query = new SocialHttpQueryString();

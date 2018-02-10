@@ -3,11 +3,18 @@ using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Meetup.Models {
-    
+
+    /// <summary>
+    /// Class representing an object received from the Meetup API.
+    /// </summary>
     public class MeetupObject : JsonObjectBase {
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/> representing the object.</param>
         protected MeetupObject(JObject obj) : base(obj) { }
 
         #endregion

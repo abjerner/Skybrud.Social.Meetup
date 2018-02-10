@@ -3,18 +3,24 @@ using Skybrud.Social.Http;
 using Skybrud.Social.Meetup.OAuth;
 
 namespace Skybrud.Social.Meetup.Endpoints.Raw {
-    
+
+    /// <summary>
+    /// Class representing the raw implementation of the <strong>Groups</strong> endpoint.
+    /// </summary>
     public class MeetupGroupsRawEndpoint {
 
         #region Properties
 
+        /// <summary>
+        /// Gets a reference to the OAuth client.
+        /// </summary>
         public IMeetupOAuthClient Client { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public MeetupGroupsRawEndpoint(IMeetupOAuthClient client) {
+        internal MeetupGroupsRawEndpoint(IMeetupOAuthClient client) {
             Client = client;
         }
 
@@ -32,6 +38,10 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
             return Client.DoHttpGetRequest("https://api.meetup.com/" + urlname);
         }
 
+        /// <summary>
+        /// Gets a list of the groups of the authenticated user.
+        /// </summary>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetUserGroups() {
             return Client.DoHttpGetRequest("https://api.meetup.com/self/groups");
         }

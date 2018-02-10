@@ -16,26 +16,59 @@ namespace Skybrud.Social.Meetup.Models.Events {
 
         #region Properties
 
+        /// <summary>
+        /// Gets a timestamp for when the event was created.
+        /// </summary>
         public EssentialsDateTime Created { get; }
 
+        /// <summary>
+        /// Gets the ID of the event.
+        /// </summary>
         public string Id { get; }
 
+        /// <summary>
+        /// Gets the name of the event.
+        /// </summary>
         public string Name { get; }
 
+        /// <summary>
+        /// Gets the start time of the event.
+        /// </summary>
         public EssentialsDateTime Time { get; }
 
+        /// <summary>
+        /// Gets a timestamp for when the event was last modified.
+        /// </summary>
         public EssentialsDateTime Updated { get; }
 
+        /// <summary>
+        /// Gets a reference to the group hosting the event.
+        /// </summary>
         public MeetupGroup Group { get; }
 
+        /// <summary>
+        /// Gets a refence to the venue of the meetup. Use <see cref="HasVenue"/> to check whether the event has a venue.
+        /// </summary>
         public MeetupVenue Venue { get; }
 
+        /// <summary>
+        /// Gets whether the event has a venue.
+        /// </summary>
         public bool HasVenue => Venue != null;
 
+        /// <summary>
+        /// Gets the URL of the event at the Meetup.com website.
+        /// </summary>
         public string Link { get; }
 
+        /// <summary>
+        /// Gets the description of the event in HTML. Email addresses and phone numbers will be masked for non-members.
+        /// </summary>
         public string Description { get; }
 
+        /// <summary>
+        /// Gets the visibility of the event.
+        /// </summary>
         public MeetupEventVisibility Visibility { get; }
 
         #endregion

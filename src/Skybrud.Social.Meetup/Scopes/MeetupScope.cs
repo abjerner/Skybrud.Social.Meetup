@@ -53,6 +53,10 @@ namespace Skybrud.Social.Meetup.Scopes {
 
         #region Member methods
 
+        /// <summary>
+        /// Returns a string representation of the scope.
+        /// </summary>
+        /// <returns>The name of the scope.</returns>
         public override string ToString() {
             return Name;
         }
