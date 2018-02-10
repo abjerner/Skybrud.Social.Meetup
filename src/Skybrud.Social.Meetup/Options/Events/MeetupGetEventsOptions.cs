@@ -17,7 +17,7 @@ namespace Skybrud.Social.Meetup.Options.Events {
 
         /// <summary>
         /// Gets or sets the maximum amount of events to be returned in a page. Must be a value greater than or equal
-        /// to <code>1</code>. Default is <code>200</code>.
+        /// to <c>1</c>. Default is <c>200</c>.
         /// </summary>
         public int Page { get; set; }
 

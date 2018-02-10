@@ -51,7 +51,7 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         public double Longitude { get; }
 
         /// <summary>
-        /// Gets the next event of the group, or <code>null</code> if there are no upcoming events.
+        /// Gets the next event of the group, or <c>null</c> if there are no upcoming events.
         /// </summary>
         public MeetupEvent NextEvent { get; }
 

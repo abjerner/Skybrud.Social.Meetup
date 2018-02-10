@@ -80,7 +80,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// Attempts to get a scope with the specified <paramref name="name"/>.
         /// </summary>
         /// <param name="name">The name of the scope.</param>
-        /// <returns>Gets a scope matching the specified <paramref name="name"/>, or <code>null</code> if not found-</returns>
+        /// <returns>Gets a scope matching the specified <paramref name="name"/>, or <c>null</c> if not found.</returns>
         public static MeetupScope GetScope(string name) {
             MeetupScope scope;
             return Scopes.TryGetValue(name, out scope) ? scope : null;
@@ -90,7 +90,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// Gets whether the scope is a known scope.
         /// </summary>
         /// <param name="name">The name of the scope.</param>
-        /// <returns><code>true</code> if the specified <paramref name="name"/> matches a known scope, otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the specified <paramref name="name"/> matches a known scope, otherwise <c>false</c>.</returns>
         public static bool ScopeExists(string name) {
             return Scopes.ContainsKey(name);
         }

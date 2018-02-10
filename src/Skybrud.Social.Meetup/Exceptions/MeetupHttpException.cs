@@ -18,17 +18,17 @@ namespace Skybrud.Social.Meetup.Exceptions {
         public SocialHttpResponse Response { get; }
 
         /// <summary>
-        /// Gets the details of the error, or <code>null</code> if not present.
+        /// Gets the details of the error, or <c>null</c> if not present.
         /// </summary>
         public string Details { get; protected set; }
 
         /// <summary>
-        /// Gets the code of the error, or <code>null</code> if not present.
+        /// Gets the code of the error, or <c>null</c> if not present.
         /// </summary>
         public string Code { get; protected set; }
 
         /// <summary>
-        /// Gets the problem of the error, or <code>null</code> if not present.
+        /// Gets the problem of the error, or <c>null</c> if not present.
         /// </summary>
         public string Problem { get; protected set; }
 
