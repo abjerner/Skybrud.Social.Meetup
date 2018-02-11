@@ -28,7 +28,7 @@ namespace Skybrud.Social.Meetup {
     /// it along to the <see cref="CreateFromOAuthClient"/> method:
     /// 
     /// <code>
-    /// MeetupOAuthClient client = new MeetupOAuthClient("Your consumer key", "Your consumer key", "The access token of the user", , "The access token secret of the user");
+    /// MeetupOAuthClient client = new MeetupOAuthClient("Your consumer key", "Your consumer key", "The access token of the user", "The access token secret of the user");
     /// 
     /// MeetupService meetup = MeetupService.GetFromOAuthClient(client);
     /// </code>
