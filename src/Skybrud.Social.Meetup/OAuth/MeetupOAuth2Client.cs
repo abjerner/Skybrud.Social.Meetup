@@ -50,6 +50,11 @@ namespace Skybrud.Social.Meetup.OAuth {
         public MeetupGroupsRawEndpoint Groups { get; }
 
         /// <summary>
+        /// Gets a reference to the raw <strong>Members</strong> endpoint.
+        /// </summary>
+        public MeetupMembersRawEndpoint Members { get; }
+
+        /// <summary>
         /// Gets or sets the API key.
         /// </summary>
         public string ApiKey { get; set; }
@@ -64,6 +69,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         public MeetupOAuth2Client() {
             Events = new MeetupEventsRawEndpoint(this);
             Groups = new MeetupGroupsRawEndpoint(this);
+            Members = new MeetupMembersRawEndpoint(this);
         }
 
         #endregion

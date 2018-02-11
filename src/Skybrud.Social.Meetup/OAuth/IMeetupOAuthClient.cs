@@ -20,6 +20,11 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// </summary>
         MeetupGroupsRawEndpoint Groups { get; }
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>Members</strong> endpoint.
+        /// </summary>
+        MeetupMembersRawEndpoint Members { get; }
+
     }
 
 }

@@ -28,10 +28,15 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// </summary>
         public MeetupGroupsRawEndpoint Groups { get; }
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>Members</strong> endpoint.
+        /// </summary>
+        public MeetupMembersRawEndpoint Members { get; }
+
         #endregion
 
         #region Constructors
-        
+
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
@@ -40,6 +45,7 @@ namespace Skybrud.Social.Meetup.OAuth {
             // Endpoints
             Events = new MeetupEventsRawEndpoint(this);
             Groups = new MeetupGroupsRawEndpoint(this);
+            Members = new MeetupMembersRawEndpoint(this);
 
             // Specific to LinkedIn
             RequestTokenUrl = "https://api.meetup.com/oauth/request/";
