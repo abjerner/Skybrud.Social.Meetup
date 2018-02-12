@@ -10,11 +10,11 @@
 
   <PropertyGroup>
     <RootNamespace>Skybrud.Social.Meetup</RootNamespace>
-    <Version>1.0.0-beta002</Version>
+    <Version>1.0.0-beta003</Version>
     <Company>Skybrud.dk a/s</Company>
     <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2017</Copyright>
+    <Copyright>Copyright © 2018</Copyright>
     <Description>Service implementation for the Meetup.com API.</Description>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Facebook</RepositoryUrl>
   </PropertyGroup>
