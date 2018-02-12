@@ -16,13 +16,13 @@
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © 2018</Copyright>
     <Description>Service implementation for the Meetup.com API.</Description>
-    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Facebook</RepositoryUrl>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Meetup</RepositoryUrl>
   </PropertyGroup>
   
   <PropertyGroup>
     <PackageTags>Meetup, API, Skybrud, Social, JSON</PackageTags>
-    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Facebook/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Facebook</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Meetup/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Meetup</PackageProjectUrl>
     <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
   </PropertyGroup>
 
