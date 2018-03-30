@@ -1,5 +1,4 @@
 ﻿using Skybrud.Social.Meetup.Endpoints.Raw;
-using Skybrud.Social.Meetup.Responses.Groups;
 using Skybrud.Social.Meetup.Responses.Members;
 
 namespace Skybrud.Social.Meetup.Endpoints {
