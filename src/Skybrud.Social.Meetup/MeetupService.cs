@@ -72,6 +72,14 @@ namespace Skybrud.Social.Meetup {
         #region Static methods
 
         /// <summary>
+        /// Initializes a new instance for public access to the Meetup.com API.
+        /// </summary>
+        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
+        public static MeetupService Create() {
+            return new MeetupService();
+        }
+
+        /// <summary>
         /// Initializes a new service based on the specified <paramref name="client"/>.
         /// </summary>
         /// <param name="client">The OAuth client to use.</param>
