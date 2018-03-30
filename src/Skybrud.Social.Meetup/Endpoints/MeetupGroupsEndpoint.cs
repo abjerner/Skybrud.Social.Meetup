@@ -13,7 +13,7 @@ namespace Skybrud.Social.Meetup.Endpoints {
         /// <summary>
         /// Gets a reference to the parent service.
         /// </summary>
-        public MeetupService Service { get; set; }
+        public MeetupService Service { get; }
 
         /// <summary>
         /// Gets a reference to the raw endpoint.

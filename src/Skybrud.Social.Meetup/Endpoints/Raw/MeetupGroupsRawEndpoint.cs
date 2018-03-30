@@ -14,7 +14,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the OAuth client.
         /// </summary>
-        public IMeetupOAuthClient Client { get; set; }
+        public IMeetupOAuthClient Client { get; }
 
         #endregion
 
