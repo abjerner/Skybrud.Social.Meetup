@@ -82,8 +82,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// <param name="name">The name of the scope.</param>
         /// <returns>Gets a scope matching the specified <paramref name="name"/>, or <c>null</c> if not found.</returns>
         public static MeetupScope GetScope(string name) {
-            MeetupScope scope;
-            return Scopes.TryGetValue(name, out scope) ? scope : null;
+            return Scopes.TryGetValue(name, out MeetupScope scope) ? scope : null;
         }
 
         /// <summary>

@@ -35,7 +35,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetGroup(string urlname) {
             if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
-            return Client.DoHttpGetRequest("https://api.meetup.com/" + urlname);
+            return Client.DoHttpGetRequest($"/{urlname}");
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// </summary>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetUserGroups() {
-            return Client.DoHttpGetRequest("https://api.meetup.com/self/groups");
+            return Client.DoHttpGetRequest("/self/groups");
         }
 
         #endregion
