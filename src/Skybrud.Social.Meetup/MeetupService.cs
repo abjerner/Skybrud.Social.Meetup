@@ -16,7 +16,7 @@ namespace Skybrud.Social.Meetup {
     /// <example>
     /// If you already have an OAuth 2.0 access token you wish to use for authentication, you can instead use the
     /// static <see cref="CreateFromAccessToken"/> method. Alternatively, if you have an API key instead, you can use
-    /// the <see cref="CreateFromApiKey"/> instead:
+    /// the <see cref="CreateFromApiKey"/> method instead:
     /// <code>
     /// MeetupService meetup1 = MeetupService.CreateFromAccessToken("your access token");
     /// 
@@ -83,6 +83,7 @@ namespace Skybrud.Social.Meetup {
         /// Initializes a new service based on the specified <paramref name="client"/>.
         /// </summary>
         /// <param name="client">The OAuth client to use.</param>
+        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
         public static MeetupService CreateFromOAuthClient(IMeetupOAuthClient client) {
             if (client == null) throw new ArgumentNullException(nameof(client));
             return new MeetupService(client);
@@ -92,6 +93,7 @@ namespace Skybrud.Social.Meetup {
         /// Initializes a new service based on the specified <strong>OAuth 2.0</strong> <paramref name="accessToken"/>.
         /// </summary>
         /// <param name="accessToken">The <strong>OAuth 2.0</strong> access token.</param>
+        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
         public static MeetupService CreateFromAccessToken(string accessToken) {
             if (String.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
             return new MeetupService(new MeetupOAuth2Client { AccessToken = accessToken });
@@ -101,6 +103,7 @@ namespace Skybrud.Social.Meetup {
         /// Initializes a new service based on the specified <paramref name="apiKey"/>.
         /// </summary>
         /// <param name="apiKey">The API key.</param>
+        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
         public static MeetupService CreateFromApiKey(string apiKey) {
             if (String.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
             return new MeetupService(new MeetupOAuth2Client { ApiKey = apiKey });
