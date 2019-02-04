@@ -71,7 +71,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         public SocialHttpResponse GetEvents(MeetupGetEventsOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
             if (String.IsNullOrWhiteSpace(options.UrlName)) throw new PropertyNotSetException(nameof(options.UrlName));
-            return Client.DoHttpGetRequest($"/{options.UrlName}/events");
+            return Client.DoHttpGetRequest($"/{options.UrlName}/events", options.GetQueryString());
         }
 
         #endregion
