@@ -34,6 +34,18 @@ namespace Skybrud.Social.Meetup.Options.Events {
         /// </summary>
         public MeetupEventStatus[] Status { get; set; }
 
+        /// <summary>
+        /// Gets or sets a list of optional field names to append to the response.
+        /// </summary>
+        /// <value>The fields.</value>
+        public string[] Fields { get; set; }
+        
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="MeetupGetEventsOptions"/> sorts results in descending order. Defaults to false.
+        /// </summary>
+        /// <value><c>true</c> if desc; otherwise, <c>false</c>.</value>
+        public bool Desc { get; set; }
+
         #endregion
 
         #region Constructors
@@ -120,9 +132,9 @@ namespace Skybrud.Social.Meetup.Options.Events {
         public IHttpQueryString GetQueryString() {
             
             IHttpQueryString query = new SocialHttpQueryString();
-
-            // TODO: Add support for the "desc" parameter
-            // TODO: Add support for the "fields" parameter
+            
+            if (Desc) query.Add("desc", "true");
+            if (Fields?.Length > 0) query.Add("fields", string.Join(",", Fields));
             if (Page > 0) query.Add("page", Page);
             if (Offset > 0) query.Add("offset", Offset);
             // TODO: Add support for the "scroll" parameter
