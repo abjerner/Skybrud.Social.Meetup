@@ -52,7 +52,7 @@ namespace Skybrud.Social.Meetup.Exceptions {
                         JObject obj = JObject.Parse(response.Body);
                         Details = obj.GetString("details");
                         Code = obj.GetString("code");
-                        Problem = obj.GetString("problem");
+                        Problem = obj.GetString("problem") ?? obj.GetString("message");
                     }
 
                     break;
