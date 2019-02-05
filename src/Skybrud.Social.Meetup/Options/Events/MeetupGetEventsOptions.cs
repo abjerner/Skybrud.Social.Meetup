@@ -3,6 +3,7 @@ using System.Linq;
 using Skybrud.Essentials.Strings;
 using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces.Http;
+using Skybrud.Social.Meetup.Models.Fields;
 
 namespace Skybrud.Social.Meetup.Options.Events {
 
@@ -38,7 +39,7 @@ namespace Skybrud.Social.Meetup.Options.Events {
         /// Gets or sets a list of optional field names to append to the response.
         /// </summary>
         /// <value>The fields.</value>
-        public string[] Fields { get; set; }
+        public MeetupFieldsCollection Fields { get; set; }
         
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="MeetupGetEventsOptions"/> sorts results in descending order. Defaults to false.
@@ -134,7 +135,7 @@ namespace Skybrud.Social.Meetup.Options.Events {
             IHttpQueryString query = new SocialHttpQueryString();
             
             if (Desc) query.Add("desc", "true");
-            if (Fields?.Length > 0) query.Add("fields", string.Join(",", Fields));
+            if (Fields?.Count > 0) query.Add("fields", Fields);
             if (Page > 0) query.Add("page", Page);
             if (Offset > 0) query.Add("offset", Offset);
             // TODO: Add support for the "scroll" parameter
