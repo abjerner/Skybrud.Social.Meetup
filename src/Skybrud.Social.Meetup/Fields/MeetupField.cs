@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Skybrud.Social.Meetup.Models.Fields {
+﻿namespace Skybrud.Social.Meetup.Fields {
     
     /// <summary>
     /// Class representing a field in the Meetup API.

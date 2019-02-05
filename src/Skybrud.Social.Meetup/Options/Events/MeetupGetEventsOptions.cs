@@ -3,7 +3,7 @@ using System.Linq;
 using Skybrud.Essentials.Strings;
 using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces.Http;
-using Skybrud.Social.Meetup.Models.Fields;
+using Skybrud.Social.Meetup.Fields;
 
 namespace Skybrud.Social.Meetup.Options.Events {
 

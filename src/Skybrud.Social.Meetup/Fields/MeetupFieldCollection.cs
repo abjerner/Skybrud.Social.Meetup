@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Skybrud.Social.Meetup.Models.Fields {
+namespace Skybrud.Social.Meetup.Fields {
     
     /// <summary>
     /// Class representing a collection of fields in the Meetup API.
