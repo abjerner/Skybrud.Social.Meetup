@@ -24,6 +24,16 @@ namespace Skybrud.Social.Meetup.Models.Events {
         public EssentialsTime Created { get; }
 
         /// <summary>
+        /// Gets the scheduled duration of the event if an end time has been specified by the organizer.
+        /// </summary>
+        public TimeSpan Duration { get; }
+
+        /// <summary>
+        /// Gets whether the event has a scheduled duration.
+        /// </summary>
+        public bool HasDuration => Duration.Ticks > 0;
+
+        /// <summary>
         /// Gets the ID of the event.
         /// </summary>
         public string Id { get; }
@@ -91,6 +101,7 @@ namespace Skybrud.Social.Meetup.Models.Events {
 
         private MeetupEvent(JObject obj) : base(obj) {
             Created = obj.HasValue("created") ? obj.GetInt64("created", ParseUnixTimestamp) : null;
+            Duration = obj.GetDouble("duration", TimeSpan.FromMilliseconds);
             Id = obj.GetString("id");
             Name = obj.GetString("name");
             Time = obj.HasValue("time") ? obj.GetInt64("time", ParseUnixTimestamp) : null;
