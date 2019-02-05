@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Social.Meetup.Fields;
@@ -43,15 +44,31 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// </summary>
         public string Name { get; }
 
+        // TODO: Add support for the "rsvp_limit"
+        
+        // TODO: Add support for the "date_in_series_pattern"
+        
+        // TODO: Add support for the "status"
+
         /// <summary>
         /// Gets the start time of the event.
         /// </summary>
         public EssentialsTime Time { get; }
+        
+        // TODO: Add support for the "local_date"
+
+        // TODO: Add support for the "local_time"
 
         /// <summary>
         /// Gets a timestamp for when the event was last modified.
         /// </summary>
         public EssentialsTime Updated { get; }
+
+        // TODO: Add support for the "utc_offset"
+
+        // TODO: Add support for the "waitlist_count"
+
+        // TODO: Add support for the "yes_rsvp_count"
 
         /// <summary>
         /// Gets a reference to the group hosting the event.
@@ -77,6 +94,8 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// Gets the description of the event in HTML. Email addresses and phone numbers will be masked for non-members.
         /// </summary>
         public string Description { get; }
+
+        // TODO: Add support for the "how_to_find_us" property
 
         /// <summary>
         /// Gets the visibility of the event.
