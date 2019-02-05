@@ -35,6 +35,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.8" />
     <PackageReference Include="Skybrud.Social.Core" Version="1.0.5" />
   </ItemGroup>
 
