@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
+using Skybrud.Social.Meetup.Fields;
 using Skybrud.Social.Meetup.Models.Groups;
+using Skybrud.Social.Meetup.Models.Photos;
 using Skybrud.Social.Meetup.Models.Venues;
 
 namespace Skybrud.Social.Meetup.Models.Events {
@@ -71,6 +73,18 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// </summary>
         public MeetupEventVisibility Visibility { get; }
 
+        /// <summary>
+        /// Gets the featured photo of the event, or <c>null</c> if not present.
+        /// 
+        /// Notice that this property requires the <see cref="MeetupEventFields.FeaturedPhoto"/> field to be part of the request.
+        /// </summary>
+        public MeetupPhoto FeaturedPhoto { get; }
+
+        /// <summary>
+        /// Gets whether the event has a featured photo.
+        /// </summary>
+        public bool HasFeaturedPhoto => FeaturedPhoto != null;
+
         #endregion
 
         #region Constructors
@@ -86,6 +100,7 @@ namespace Skybrud.Social.Meetup.Models.Events {
             Link = obj.GetString("link");
             Description = obj.GetString("description");
             Visibility = obj.HasValue("visiblity") ? obj.GetEnum<MeetupEventVisibility>("visibility") : MeetupEventVisibility.Unspecified;
+            FeaturedPhoto = obj.GetObject("featured_photo", MeetupPhoto.Parse);
         }
 
         #endregion
