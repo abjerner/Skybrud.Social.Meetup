@@ -1,9 +1,9 @@
-﻿namespace Skybrud.Social.Meetup.Models.Groups {
+﻿namespace Skybrud.Social.Meetup.Models.Photos {
     
     /// <summary>
-    /// Enum class representing the type of a group photo.
+    /// Enum class representing the type of a photo.
     /// </summary>
-    public enum MeetupGroupPhotoType {
+    public enum MeetupPhotoType {
 
         /// <summary>
         /// Indicates that the photo is from an event.

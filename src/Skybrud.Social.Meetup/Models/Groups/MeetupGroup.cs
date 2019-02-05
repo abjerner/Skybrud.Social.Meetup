@@ -2,6 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Locations;
 using Skybrud.Social.Meetup.Models.Events;
+using Skybrud.Social.Meetup.Models.Photos;
 
 namespace Skybrud.Social.Meetup.Models.Groups {
     
@@ -63,7 +64,7 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the group photo of the group.
         /// </summary>
-        public MeetupGroupPhoto GroupPhoto { get; }
+        public MeetupPhoto GroupPhoto { get; }
 
         /// <summary>
         /// Gets whether the group has a group photo.
@@ -73,7 +74,7 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the primary photo of the group.
         /// </summary>
-        public MeetupGroupPhoto KeyPhoto { get; }
+        public MeetupPhoto KeyPhoto { get; }
 
         /// <summary>
         /// Gets whether the group has a key photo.
@@ -93,8 +94,8 @@ namespace Skybrud.Social.Meetup.Models.Groups {
             Latitude = obj.GetDouble("lat");
             Longitude = obj.GetDouble("lon");
             NextEvent = obj.GetObject("next_event", MeetupEvent.Parse);
-            GroupPhoto = obj.GetObject("group_photo", MeetupGroupPhoto.Parse);
-            KeyPhoto = obj.GetObject("key_photo", MeetupGroupPhoto.Parse);
+            GroupPhoto = obj.GetObject("group_photo", MeetupPhoto.Parse);
+            KeyPhoto = obj.GetObject("key_photo", MeetupPhoto.Parse);
         }
 
         #endregion

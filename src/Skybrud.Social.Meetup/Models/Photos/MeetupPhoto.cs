@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Meetup.Models.Groups {
+namespace Skybrud.Social.Meetup.Models.Photos {
     
     /// <summary>
-    /// Class representing a photo of a group.
+    /// Class representing a photo of a group or event.
     /// </summary>
-    public class MeetupGroupPhoto : MeetupObject {
+    public class MeetupPhoto : MeetupObject {
 
         #region Properties
 
@@ -33,7 +33,7 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the type of the photo.
         /// </summary>
-        public MeetupGroupPhotoType Type { get; }
+        public MeetupPhotoType Type { get; }
         
         /// <summary>
         /// Gets a base url that can be use to construct a photo url from its components.
@@ -44,12 +44,12 @@ namespace Skybrud.Social.Meetup.Models.Groups {
 
         #region Constructors
 
-        private MeetupGroupPhoto(JObject obj) : base(obj) {
+        private MeetupPhoto(JObject obj) : base(obj) {
             Id = obj.GetInt64("id");
             HighresLink = obj.GetString("highres_link");
             PhotoLink = obj.GetString("photo_link");
             ThumbLink = obj.GetString("thumb_link");
-            Type = obj.GetEnum<MeetupGroupPhotoType>("type");
+            Type = obj.GetEnum<MeetupPhotoType>("type");
             BaseUrl = obj.GetString("base_url");
         }
 
@@ -58,12 +58,12 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="MeetupGroupPhoto"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="MeetupPhoto"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>An instance of <see cref="MeetupGroupPhoto"/>.</returns>
-        public static MeetupGroupPhoto Parse(JObject obj) {
-            return obj == null ? null : new MeetupGroupPhoto(obj);
+        /// <returns>An instance of <see cref="MeetupPhoto"/>.</returns>
+        public static MeetupPhoto Parse(JObject obj) {
+            return obj == null ? null : new MeetupPhoto(obj);
         }
 
         #endregion
