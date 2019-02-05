@@ -71,7 +71,7 @@ namespace Skybrud.Social.Meetup.Models.Members {
         /// <summary>
         /// Gets a timestamp for when the member joined Meetup.
         /// </summary>
-        public EssentialsDateTime Joined { get; }
+        public EssentialsTime Joined { get; }
 
         /// <summary>
         /// Gets the language of the member.

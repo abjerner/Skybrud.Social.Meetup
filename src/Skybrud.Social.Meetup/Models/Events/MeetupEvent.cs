@@ -21,7 +21,7 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// <summary>
         /// Gets a timestamp for when the event was created.
         /// </summary>
-        public EssentialsDateTime Created { get; }
+        public EssentialsTime Created { get; }
 
         /// <summary>
         /// Gets the ID of the event.
@@ -36,12 +36,12 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// <summary>
         /// Gets the start time of the event.
         /// </summary>
-        public EssentialsDateTime Time { get; }
+        public EssentialsTime Time { get; }
 
         /// <summary>
         /// Gets a timestamp for when the event was last modified.
         /// </summary>
-        public EssentialsDateTime Updated { get; }
+        public EssentialsTime Updated { get; }
 
         /// <summary>
         /// Gets a reference to the group hosting the event.

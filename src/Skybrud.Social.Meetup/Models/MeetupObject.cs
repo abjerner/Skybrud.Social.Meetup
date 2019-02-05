@@ -22,12 +22,12 @@ namespace Skybrud.Social.Meetup.Models {
         #region Member methods
 
         /// <summary>
-        /// Parses the specified millisecond UNIX timestamp into an instance of <see cref="EssentialsDateTime"/>.
+        /// Parses the specified millisecond UNIX timestamp into an instance of <see cref="EssentialsTime"/>.
         /// </summary>
         /// <param name="timestamp">The timestamp to be parsed.</param>
-        /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-        protected EssentialsDateTime ParseUnixTimestamp(long timestamp) {
-            return EssentialsDateTime.FromUnixTimestamp(timestamp / 1000);
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        protected EssentialsTime ParseUnixTimestamp(long timestamp) {
+            return EssentialsTime.FromUnixTimestamp(timestamp / 1000);
         }
 
         #endregion
