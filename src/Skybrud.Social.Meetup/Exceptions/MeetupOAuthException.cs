@@ -1,5 +1,5 @@
-﻿using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
+﻿using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
 
 namespace Skybrud.Social.Meetup.Exceptions {
 
@@ -13,11 +13,11 @@ namespace Skybrud.Social.Meetup.Exceptions {
         /// <summary>
         /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
-        public MeetupOAuthException(SocialHttpResponse response) : base(response) {
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+        public MeetupOAuthException(IHttpResponse response) : base(response) {
 
             if (response.ContentType.StartsWith("application/x-www-form-urlencoded")) {
-                IHttpQueryString query = SocialHttpQueryString.ParseQueryString(response.Body);
+                IHttpQueryString query = HttpQueryString.ParseQueryString(response.Body);
                 Problem = query["oauth_problem"];
             }
 

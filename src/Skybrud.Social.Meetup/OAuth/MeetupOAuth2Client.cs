@@ -1,7 +1,8 @@
 using System;
 using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Client;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Social.Meetup.Endpoints.Raw;
 using Skybrud.Social.Meetup.Responses.Authentication;
 using Skybrud.Social.Meetup.Scopes;
@@ -11,7 +12,7 @@ namespace Skybrud.Social.Meetup.OAuth {
     /// <summary>
     /// OAuth 2.0 client for the Meetup.com API.
     /// </summary>
-    public class MeetupOAuth2Client : SocialHttpClient, IMeetupOAuthClient {
+    public class MeetupOAuth2Client : HttpClient, IMeetupOAuthClient {
 
         #region Properties
         
@@ -112,7 +113,7 @@ namespace Skybrud.Social.Meetup.OAuth {
                 throw new ArgumentNullException(nameof(state), "A valid state should be specified as it is part of the security of OAuth 2.0.");
             }
 
-            IHttpQueryString query = new SocialHttpQueryString();
+            IHttpQueryString query = new HttpQueryString();
             query.Add("client_id", ClientId);
             query.Add("redirect_uri", RedirectUri);
             query.Add("response_type", "code");
@@ -141,7 +142,7 @@ namespace Skybrud.Social.Meetup.OAuth {
             if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize the query string
-            SocialHttpPostData data = new SocialHttpPostData {
+            HttpPostData data = new HttpPostData {
                 {"client_id", ClientId},
                 {"client_secret", ClientSecret},
                 {"grant_type", "authorization_code"},
@@ -150,7 +151,7 @@ namespace Skybrud.Social.Meetup.OAuth {
             };
 
             // Make the call to the API
-            SocialHttpResponse response = SocialUtils.Http.DoHttpPostRequest("https://secure.meetup.com/oauth2/access", null, data);
+            IHttpResponse response = HttpUtils.Http.DoHttpPostRequest("https://secure.meetup.com/oauth2/access", null, data);
             
             // Parse the response
             return MeetupTokenResponse.ParseResponse(response);
@@ -165,7 +166,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// <see>
         ///     <cref>https://www.meetup.com/meetup_api/auth/#oauth2-resources</cref>
         /// </see>
-        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+        protected override void PrepareHttpRequest(IHttpRequest request) {
 
             base.PrepareHttpRequest(request);
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Social.Meetup.Exceptions {
 
@@ -13,9 +13,9 @@ namespace Skybrud.Social.Meetup.Exceptions {
         #region Properties
 
         /// <summary>
-        /// Gets a reference to the underlying <see cref="SocialHttpResponse"/>.
+        /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
         /// </summary>
-        public SocialHttpResponse Response { get; }
+        public IHttpResponse Response { get; }
 
         /// <summary>
         /// Gets the details of the error, or <c>null</c> if not present.
@@ -39,8 +39,8 @@ namespace Skybrud.Social.Meetup.Exceptions {
         /// <summary>
         /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
-        public MeetupHttpException(SocialHttpResponse response) : base("Invalid response received from the Meetup API (Status: " + (int) response.StatusCode + ")") {
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+        public MeetupHttpException(IHttpResponse response) : base("Invalid response received from the Meetup API (Status: " + (int) response.StatusCode + ")") {
 
             Response = response;
             

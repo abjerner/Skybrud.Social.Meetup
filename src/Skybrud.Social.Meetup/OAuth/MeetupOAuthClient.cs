@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
 using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.OAuth;
 using Skybrud.Social.Meetup.Endpoints.Raw;
 using Skybrud.Social.Meetup.Exceptions;
-using Skybrud.Social.OAuth;
 
 namespace Skybrud.Social.Meetup.OAuth {
     
@@ -14,7 +14,7 @@ namespace Skybrud.Social.Meetup.OAuth {
     /// <see>
     ///     <cref>https://www.meetup.com/meetup_api/auth/#oauth</cref>
     /// </see>
-    public class MeetupOAuthClient : SocialOAuthClient, IMeetupOAuthClient {
+    public class MeetupOAuthClient : OAuthClient, IMeetupOAuthClient {
 
         #region Properties
         
@@ -90,15 +90,15 @@ namespace Skybrud.Social.Meetup.OAuth {
 
         #region Member methods
 
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        protected override SocialHttpResponse GetRequestTokenResponse() {
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        protected override IHttpResponse GetRequestTokenResponse() {
 
             // Some error checking
             if (String.IsNullOrWhiteSpace(RequestTokenUrl)) throw new PropertyNotSetException("RequestTokenUrl");
             if (String.IsNullOrWhiteSpace(AuthorizeUrl)) throw new PropertyNotSetException("AuthorizeUrl");
 
             // Make the call to the API/provider
-            SocialHttpResponse response = DoHttpPostRequest(RequestTokenUrl);
+            IHttpResponse response = DoHttpPostRequest(RequestTokenUrl);
             
             if (response.StatusCode != HttpStatusCode.OK) {
                 throw new MeetupOAuthException(response);
@@ -112,8 +112,8 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// Updates the request with missing information. For <see cref="MeetupOAuthClient"/> specifically, this means
         /// that the scheme and host name of the API are prepended to the URL if not already present. 
         /// </summary>
-        /// <param name="request">The instance of <see cref="SocialHttpRequest"/> representing the request.</param>
-        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+        /// <param name="request">The instance of <see cref="IHttpRequest"/> representing the request.</param>
+        protected override void PrepareHttpRequest(IHttpRequest request) {
 
             base.PrepareHttpRequest(request);
 

@@ -1,5 +1,5 @@
 ﻿using Skybrud.Social.Meetup.Models.Authentication;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 
 namespace Skybrud.Social.Meetup.Responses.Authentication {
 
@@ -15,7 +15,7 @@ namespace Skybrud.Social.Meetup.Responses.Authentication {
 
         #region Constructors
 
-        private MeetupTokenResponse(SocialHttpResponse response) : base(response) {
+        private MeetupTokenResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -32,9 +32,9 @@ namespace Skybrud.Social.Meetup.Responses.Authentication {
         /// <summary>
         /// Parses the specified <paramref name="response"/> into an instance of <see cref="MeetupTokenResponse"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         /// <returns>An instance of <see cref="MeetupTokenResponse"/> representing the response.</returns>
-        public static MeetupTokenResponse ParseResponse(SocialHttpResponse response) {
+        public static MeetupTokenResponse ParseResponse(IHttpResponse response) {
             return response == null ? null : new MeetupTokenResponse(response);
         }
 

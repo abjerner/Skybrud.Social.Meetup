@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Social.Meetup.OAuth;
 
 namespace Skybrud.Social.Meetup.Endpoints.Raw {
@@ -26,15 +26,15 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         #endregion
 
         #region Member methods
-        
+
         /// <summary>
         /// Gets information about the authenticated member/user.
         /// </summary>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://www.meetup.com/meetup_api/docs/2/member/#get</cref>
         /// </see>
-        public SocialHttpResponse GetMember() {
+        public IHttpResponse GetMember() {
             return Client.DoHttpGetRequest("https://api.meetup.com/members/self");
         }
 
@@ -42,11 +42,11 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// Gets information about the member with the specified <paramref name="memberId"/>.
         /// </summary>
         /// <param name="memberId">The ID of the member.</param>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://www.meetup.com/meetup_api/docs/2/member/#get</cref>
         /// </see>
-        public SocialHttpResponse GetMember(int memberId) {
+        public IHttpResponse GetMember(int memberId) {
             return Client.DoHttpGetRequest("https://api.meetup.com/members/" + memberId);
         }
 

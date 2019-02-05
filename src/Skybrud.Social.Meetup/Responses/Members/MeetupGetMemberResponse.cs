@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.Meetup.Models.Members;
 
 namespace Skybrud.Social.Meetup.Responses.Members {
@@ -11,7 +11,7 @@ namespace Skybrud.Social.Meetup.Responses.Members {
 
         #region Constructors
 
-        private MeetupGetMemberResponse(SocialHttpResponse response) : base(response) {
+        private MeetupGetMemberResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -28,9 +28,9 @@ namespace Skybrud.Social.Meetup.Responses.Members {
         /// <summary>
         /// Parses the specified <paramref name="response"/> into an instance of <see cref="MeetupGetMemberResponse"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         /// <returns>An instance of <see cref="MeetupGetMemberResponse"/> representing the response.</returns>
-        public static MeetupGetMemberResponse ParseResponse(SocialHttpResponse response) {
+        public static MeetupGetMemberResponse ParseResponse(IHttpResponse response) {
             if (response == null) throw new ArgumentNullException(nameof(response));
             return new MeetupGetMemberResponse(response);
         }

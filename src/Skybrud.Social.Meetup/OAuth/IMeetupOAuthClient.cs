@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.Interfaces.Http;
+﻿using Skybrud.Essentials.Http.Client;
 using Skybrud.Social.Meetup.Endpoints.Raw;
 
 namespace Skybrud.Social.Meetup.OAuth {

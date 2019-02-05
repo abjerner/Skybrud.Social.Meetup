@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 using Skybrud.Essentials.Strings;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.Meetup.Fields;
 
 namespace Skybrud.Social.Meetup.Options.Events {
@@ -132,7 +132,7 @@ namespace Skybrud.Social.Meetup.Options.Events {
         /// </summary>
         public IHttpQueryString GetQueryString() {
             
-            IHttpQueryString query = new SocialHttpQueryString();
+            IHttpQueryString query = new HttpQueryString();
             
             if (Desc) query.Add("desc", "true");
             if (Fields?.Count > 0) query.Add("fields", Fields);
