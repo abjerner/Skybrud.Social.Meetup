@@ -34,7 +34,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// <param name="urlname">The URL name/slug of the group.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         public IHttpResponse GetGroup(string urlname) {
-            if (String.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
+            if (string.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
             return Client.DoHttpGetRequest($"/{urlname}");
         }
 

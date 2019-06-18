@@ -95,7 +95,7 @@ namespace Skybrud.Social.Meetup {
         /// <param name="accessToken">The <strong>OAuth 2.0</strong> access token.</param>
         /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
         public static MeetupService CreateFromAccessToken(string accessToken) {
-            if (String.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
+            if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
             return new MeetupService(new MeetupOAuth2Client { AccessToken = accessToken });
         }
 
@@ -105,7 +105,7 @@ namespace Skybrud.Social.Meetup {
         /// <param name="apiKey">The API key.</param>
         /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
         public static MeetupService CreateFromApiKey(string apiKey) {
-            if (String.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
+            if (string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
             return new MeetupService(new MeetupOAuth2Client { ApiKey = apiKey });
         }
 

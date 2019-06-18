@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.OAuth;
@@ -92,10 +91,10 @@ namespace Skybrud.Social.Meetup.OAuth {
 
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         protected override IHttpResponse GetRequestTokenResponse() {
-
+            
             // Some error checking
-            if (String.IsNullOrWhiteSpace(RequestTokenUrl)) throw new PropertyNotSetException("RequestTokenUrl");
-            if (String.IsNullOrWhiteSpace(AuthorizeUrl)) throw new PropertyNotSetException("AuthorizeUrl");
+            if (string.IsNullOrWhiteSpace(RequestTokenUrl)) throw new PropertyNotSetException(nameof(RequestTokenUrl));
+            if (string.IsNullOrWhiteSpace(AuthorizeUrl)) throw new PropertyNotSetException(nameof(AuthorizeUrl));
 
             // Make the call to the API/provider
             IHttpResponse response = DoHttpPostRequest(RequestTokenUrl);

@@ -36,7 +36,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// <param name="name">The name of the scope.</param>
         public MeetupScope(string name) {
             Name = name;
-            Description = String.Empty;
+            Description = string.Empty;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// <param name="description">The description of the scope.</param>
         public MeetupScope(string name, string description) {
             Name = name;
-            Description = String.IsNullOrWhiteSpace(description) ? String.Empty : description.Trim();
+            Description = string.IsNullOrWhiteSpace(description) ? string.Empty : description.Trim();
         }
 
         #endregion

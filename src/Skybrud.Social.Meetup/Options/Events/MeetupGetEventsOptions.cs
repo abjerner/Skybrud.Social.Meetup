@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
@@ -140,7 +139,7 @@ namespace Skybrud.Social.Meetup.Options.Events {
             if (Offset > 0) query.Add("offset", Offset);
             // TODO: Add support for the "scroll" parameter
 
-            if (Status != null && Status.Length > 0) query.Add("status", String.Join(",", from status in Status select StringUtils.ToCamelCase(status))); 
+            if (Status != null && Status.Length > 0) query.Add("status", string.Join(",", from status in Status select StringUtils.ToCamelCase(status))); 
 
             return query;
 

@@ -20,7 +20,7 @@ namespace Skybrud.Social.Meetup.Models.Members {
         /// <summary>
         /// Gets whether the member has specified a bio.
         /// </summary>
-        public bool HasBio => String.IsNullOrWhiteSpace(Bio);
+        public bool HasBio => string.IsNullOrWhiteSpace(Bio);
 
         /// <summary>
         /// Gets the birthday of the member, or <c>null</c> if not specified. Use <see cref="HasBirthday"/> to check

@@ -105,11 +105,11 @@ namespace Skybrud.Social.Meetup.OAuth {
         public string GetAuthorizationUrl(string state, params string[] scope) {
 
             // Some validation
-            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
-            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
 
             // Do we have a valid "state" ?
-            if (String.IsNullOrWhiteSpace(state)) {
+            if (string.IsNullOrWhiteSpace(state)) {
                 throw new ArgumentNullException(nameof(state), "A valid state should be specified as it is part of the security of OAuth 2.0.");
             }
 
@@ -119,8 +119,8 @@ namespace Skybrud.Social.Meetup.OAuth {
             query.Add("response_type", "code");
             query.Add("state", state);
 
-            string s = String.Join("+", scope ?? new string[0]);
-            if (!String.IsNullOrWhiteSpace(s)) query.Add("scope", s);
+            string s = string.Join("+", scope ?? new string[0]);
+            if (!string.IsNullOrWhiteSpace(s)) query.Add("scope", s);
 
             // Generate the authorization URL
             return "https://secure.meetup.com/oauth2/authorize?" + query;
@@ -136,10 +136,10 @@ namespace Skybrud.Social.Meetup.OAuth {
         public MeetupTokenResponse GetAccessTokenFromAuthCode(string authCode) {
 
             // Some validation
-            if (String.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException("ClientId");
-            if (String.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException("ClientSecret");
-            if (String.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException("RedirectUri");
-            if (String.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException("ClientId");
+            if (string.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException("ClientSecret");
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException("RedirectUri");
+            if (string.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize the query string
             HttpPostData data = new HttpPostData {
@@ -173,9 +173,9 @@ namespace Skybrud.Social.Meetup.OAuth {
             // Append the scheme and host name if not already present
             if (request.Url.StartsWith("/")) request.Url = "https://api.meetup.com" + request.Url;
 
-            if (!String.IsNullOrWhiteSpace(AccessToken)) {
+            if (!string.IsNullOrWhiteSpace(AccessToken)) {
                 request.Headers.Authorization = "Bearer " + AccessToken;
-            } else if (!String.IsNullOrWhiteSpace(ApiKey)) {
+            } else if (!string.IsNullOrWhiteSpace(ApiKey)) {
                 request.QueryString.Set("key", ApiKey);
             }
             
