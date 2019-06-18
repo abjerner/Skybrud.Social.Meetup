@@ -33,6 +33,9 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// </summary>
         /// <param name="urlname">The URL name/slug of the group.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://www.meetup.com/meetup_api/docs/:urlname/#get</cref>
+        /// </see>
         public IHttpResponse GetGroup(string urlname) {
             if (string.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
             return Client.DoHttpGetRequest($"/{urlname}");
@@ -42,6 +45,9 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// Gets a list of the groups of the authenticated user.
         /// </summary>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://www.meetup.com/meetup_api/docs/self/groups/</cref>
+        /// </see>
         public IHttpResponse GetUserGroups() {
             return Client.DoHttpGetRequest("/self/groups");
         }
