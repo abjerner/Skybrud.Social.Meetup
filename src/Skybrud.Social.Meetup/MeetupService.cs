@@ -104,6 +104,7 @@ namespace Skybrud.Social.Meetup {
         /// </summary>
         /// <param name="apiKey">The API key.</param>
         /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
+        [Obsolete("The API keys are not supported anymore, migrate to OAuth2 or use Create()", true)]
         public static MeetupService CreateFromApiKey(string apiKey) {
             if (String.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
             return new MeetupService(new MeetupOAuth2Client { ApiKey = apiKey });
