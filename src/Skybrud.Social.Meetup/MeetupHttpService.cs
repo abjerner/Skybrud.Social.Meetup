@@ -20,7 +20,7 @@ namespace Skybrud.Social.Meetup {
     /// MeetupService meetup1 = MeetupService.CreateFromAccessToken("your access token");
     /// </code>
     /// </example>
-    public class MeetupService {
+    public class MeetupHttpService {
 
         #region Properties
 
@@ -46,9 +46,9 @@ namespace Skybrud.Social.Meetup {
         /// <summary>
         /// Initializes a new instance with default settings.
         /// </summary>
-        public MeetupService() : this(new MeetupOAuthClient()) { }
+        public MeetupHttpService() : this(new MeetupOAuthClient()) { }
 
-        private MeetupService(MeetupOAuthClient client) {
+        private MeetupHttpService(MeetupOAuthClient client) {
             Client = client;
             Events = new MeetupEventsEndpoint(this);
             Groups = new MeetupGroupsEndpoint(this);
@@ -61,29 +61,29 @@ namespace Skybrud.Social.Meetup {
         /// <summary>
         /// Initializes a new instance for public access to the Meetup.com API.
         /// </summary>
-        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
-        public static MeetupService Create() {
-            return new MeetupService();
+        /// <returns>A new instance of <see cref="MeetupHttpService"/>.</returns>
+        public static MeetupHttpService Create() {
+            return new MeetupHttpService();
         }
 
         /// <summary>
         /// Initializes a new service based on the specified <paramref name="client"/>.
         /// </summary>
         /// <param name="client">The OAuth client to use.</param>
-        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
-        public static MeetupService CreateFromOAuthClient(MeetupOAuthClient client) {
+        /// <returns>A new instance of <see cref="MeetupHttpService"/>.</returns>
+        public static MeetupHttpService CreateFromOAuthClient(MeetupOAuthClient client) {
             if (client == null) throw new ArgumentNullException(nameof(client));
-            return new MeetupService(client);
+            return new MeetupHttpService(client);
         }
 
         /// <summary>
         /// Initializes a new service based on the specified <strong>OAuth 2.0</strong> <paramref name="accessToken"/>.
         /// </summary>
         /// <param name="accessToken">The <strong>OAuth 2.0</strong> access token.</param>
-        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
-        public static MeetupService CreateFromAccessToken(string accessToken) {
+        /// <returns>A new instance of <see cref="MeetupHttpService"/>.</returns>
+        public static MeetupHttpService CreateFromAccessToken(string accessToken) {
             if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
-            return new MeetupService(new MeetupOAuthClient { AccessToken = accessToken });
+            return new MeetupHttpService(new MeetupOAuthClient { AccessToken = accessToken });
         }
 
         #endregion

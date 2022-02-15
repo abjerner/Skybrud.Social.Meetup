@@ -14,7 +14,7 @@ namespace Skybrud.Social.Meetup.Endpoints {
         /// <summary>
         /// Gets a reference to the parent service.
         /// </summary>
-        public MeetupService Service { get; }
+        public MeetupHttpService Service { get; }
 
         /// <summary>
         /// Gets a reference to the raw endpoint.
@@ -25,7 +25,7 @@ namespace Skybrud.Social.Meetup.Endpoints {
 
         #region Constructors
 
-        internal MeetupEventsEndpoint(MeetupService service) {
+        internal MeetupEventsEndpoint(MeetupHttpService service) {
             Service = service;
         }
 
