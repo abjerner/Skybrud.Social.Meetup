@@ -8,21 +8,10 @@ namespace Skybrud.Social.Meetup.Responses.Authentication {
     /// </summary>
     public class MeetupTokenResponse : MeetupResponse<MeetupToken> {
 
-        #region Properties
-        
-
-        #endregion
-
         #region Constructors
 
         private MeetupTokenResponse(IHttpResponse response) : base(response) {
-
-            // Validate the response
-            ValidateResponse(response);
-
-            // Parse the response body
             Body = ParseJsonObject(response.Body, MeetupToken.Parse);
-
         }
 
         #endregion

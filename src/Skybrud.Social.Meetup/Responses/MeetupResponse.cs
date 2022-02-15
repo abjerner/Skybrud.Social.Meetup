@@ -9,32 +9,19 @@ namespace Skybrud.Social.Meetup.Responses {
     /// </summary>
     public class MeetupResponse : HttpResponseBase {
 
-        #region Constructors
-
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
-        protected MeetupResponse(IHttpResponse response) : base(response) { }
-
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Validates the specified <paramref name="response"/>.
-        /// </summary>
-        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
-        public static void ValidateResponse(IHttpResponse response) {
+        protected MeetupResponse(IHttpResponse response) : base(response) {
 
             // Skip error checking if the server responds with an OK status code
             if (response.StatusCode == HttpStatusCode.OK) return;
             
             throw new MeetupHttpException(response);
 
-        }
 
-        #endregion
+        }
 
     }
 

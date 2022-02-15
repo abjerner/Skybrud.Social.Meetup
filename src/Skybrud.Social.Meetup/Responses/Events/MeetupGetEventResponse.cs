@@ -12,13 +12,7 @@ namespace Skybrud.Social.Meetup.Responses.Events {
         #region Constructors
 
         private MeetupGetEventResponse(IHttpResponse response) : base(response) {
-
-            // Validate the response
-            ValidateResponse(response);
-
-            // Parse the response body
             Body = ParseJsonObject(response.Body, MeetupEvent.Parse);
-
         }
 
         #endregion
