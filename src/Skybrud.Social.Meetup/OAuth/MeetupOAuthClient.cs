@@ -131,9 +131,9 @@ namespace Skybrud.Social.Meetup.OAuth {
         public MeetupTokenResponse GetAccessTokenFromAuthCode(string authCode) {
 
             // Some validation
-            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException("ClientId");
-            if (string.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException("ClientSecret");
-            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException("RedirectUri");
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException(nameof(ClientSecret));
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
             if (string.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize the query string
@@ -166,10 +166,10 @@ namespace Skybrud.Social.Meetup.OAuth {
             base.PrepareHttpRequest(request);
 
             // Append the scheme and host name if not already present
-            if (request.Url.StartsWith("/")) request.Url = "https://api.meetup.com" + request.Url;
+            if (request.Url.StartsWith("/")) request.Url = $"https://api.meetup.com{request.Url}";
 
             if (!string.IsNullOrWhiteSpace(AccessToken)) {
-                request.Headers.Authorization = "Bearer " + AccessToken;
+                request.Headers.Authorization = $"Bearer {AccessToken}";
             }
             
         }
