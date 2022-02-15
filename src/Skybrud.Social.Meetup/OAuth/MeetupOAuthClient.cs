@@ -146,7 +146,8 @@ namespace Skybrud.Social.Meetup.OAuth {
             };
 
             // Make the call to the API
-            IHttpResponse response = HttpUtils.Http.DoHttpPostRequest("https://secure.meetup.com/oauth2/access", null, data);
+            IHttpResponse response = HttpUtils.Requests
+                .Post("https://secure.meetup.com/oauth2/access", null, data);
             
             // Parse the response
             return MeetupTokenResponse.ParseResponse(response);

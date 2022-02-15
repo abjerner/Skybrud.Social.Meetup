@@ -42,7 +42,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         public IHttpResponse GetEvent(string urlname, string eventId) {
             if (string.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
             if (string.IsNullOrWhiteSpace(eventId)) throw new ArgumentNullException(nameof(eventId));
-            return Client.DoHttpGetRequest($"/{urlname}/events/{eventId}");
+            return Client.Get($"/{urlname}/events/{eventId}");
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// </see>
         public IHttpResponse GetEvents(string urlname) {
             if (string.IsNullOrWhiteSpace(urlname)) throw new ArgumentNullException(nameof(urlname));
-            return Client.DoHttpGetRequest($"/{urlname}/events");
+            return Client.Get($"/{urlname}/events");
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         public IHttpResponse GetEvents(MeetupGetEventsOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
             if (string.IsNullOrWhiteSpace(options.UrlName)) throw new PropertyNotSetException(nameof(options.UrlName));
-            return Client.DoHttpGetRequest($"/{options.UrlName}/events", options);
+            return Client.Get($"/{options.UrlName}/events", options);
         }
 
         #endregion

@@ -35,7 +35,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         ///     <cref>https://www.meetup.com/meetup_api/docs/2/member/#get</cref>
         /// </see>
         public IHttpResponse GetMember() {
-            return Client.DoHttpGetRequest("https://api.meetup.com/members/self");
+            return Client.Get("https://api.meetup.com/members/self");
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         ///     <cref>https://www.meetup.com/meetup_api/docs/2/member/#get</cref>
         /// </see>
         public IHttpResponse GetMember(int memberId) {
-            return Client.DoHttpGetRequest("https://api.meetup.com/members/" + memberId);
+            return Client.Get("https://api.meetup.com/members/" + memberId);
         }
 
         #endregion
