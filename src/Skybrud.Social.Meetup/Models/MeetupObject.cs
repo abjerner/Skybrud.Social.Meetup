@@ -27,7 +27,7 @@ namespace Skybrud.Social.Meetup.Models {
         /// <param name="timestamp">The timestamp to be parsed.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         protected EssentialsTime ParseUnixTimestamp(long timestamp) {
-            return EssentialsTime.FromUnixTimestamp(timestamp / 1000);
+            return EssentialsTime.FromUnixTimeMilliseconds(timestamp);
         }
 
         #endregion
