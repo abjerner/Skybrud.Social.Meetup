@@ -15,22 +15,9 @@ namespace Skybrud.Social.Meetup {
     /// </example>
     /// <example>
     /// If you already have an OAuth 2.0 access token you wish to use for authentication, you can instead use the
-    /// static <see cref="CreateFromAccessToken"/> method. Alternatively, if you have an API key instead, you can use
-    /// the <see cref="CreateFromApiKey"/> method instead:
+    /// static <see cref="CreateFromAccessToken"/> method.
     /// <code>
     /// MeetupService meetup1 = MeetupService.CreateFromAccessToken("your access token");
-    /// 
-    /// MeetupService meetup2 = MeetupService.CreateFromAccessToken("your API key");
-    /// </code>
-    /// </example>
-    /// <example>
-    /// If you wish to use OAuth 1.0a, you can configure an instance of <see cref="MeetupOAuthClient"/>, and then pass
-    /// it along to the <see cref="CreateFromOAuthClient"/> method:
-    /// 
-    /// <code>
-    /// MeetupOAuthClient client = new MeetupOAuthClient("Your consumer key", "Your consumer key", "The access token of the user", "The access token secret of the user");
-    /// 
-    /// MeetupService meetup = MeetupService.GetFromOAuthClient(client);
     /// </code>
     /// </example>
     public class MeetupService {
@@ -40,7 +27,7 @@ namespace Skybrud.Social.Meetup {
         /// <summary>
         /// Gets a reference to the internal OAuth client for communication with the Meetup API.
         /// </summary>
-        public IMeetupOAuthClient Client { get; }
+        public MeetupOAuthClient Client { get; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Events</strong> endpoint.
@@ -59,9 +46,9 @@ namespace Skybrud.Social.Meetup {
         /// <summary>
         /// Initializes a new instance with default settings.
         /// </summary>
-        public MeetupService() : this(new MeetupOAuth2Client()) { }
+        public MeetupService() : this(new MeetupOAuthClient()) { }
 
-        private MeetupService(IMeetupOAuthClient client) {
+        private MeetupService(MeetupOAuthClient client) {
             Client = client;
             Events = new MeetupEventsEndpoint(this);
             Groups = new MeetupGroupsEndpoint(this);
@@ -84,7 +71,7 @@ namespace Skybrud.Social.Meetup {
         /// </summary>
         /// <param name="client">The OAuth client to use.</param>
         /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
-        public static MeetupService CreateFromOAuthClient(IMeetupOAuthClient client) {
+        public static MeetupService CreateFromOAuthClient(MeetupOAuthClient client) {
             if (client == null) throw new ArgumentNullException(nameof(client));
             return new MeetupService(client);
         }
@@ -96,18 +83,7 @@ namespace Skybrud.Social.Meetup {
         /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
         public static MeetupService CreateFromAccessToken(string accessToken) {
             if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
-            return new MeetupService(new MeetupOAuth2Client { AccessToken = accessToken });
-        }
-
-        /// <summary>
-        /// Initializes a new service based on the specified <paramref name="apiKey"/>.
-        /// </summary>
-        /// <param name="apiKey">The API key.</param>
-        /// <returns>A new instance of <see cref="MeetupService"/>.</returns>
-        [Obsolete("The API keys are not supported anymore, migrate to OAuth2 or use Create()", true)]
-        public static MeetupService CreateFromApiKey(string apiKey) {
-            if (string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
-            return new MeetupService(new MeetupOAuth2Client { ApiKey = apiKey });
+            return new MeetupService(new MeetupOAuthClient { AccessToken = accessToken });
         }
 
         #endregion

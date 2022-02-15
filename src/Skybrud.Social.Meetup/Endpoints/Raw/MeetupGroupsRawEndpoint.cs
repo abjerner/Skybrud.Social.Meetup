@@ -14,13 +14,13 @@ namespace Skybrud.Social.Meetup.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the OAuth client.
         /// </summary>
-        public IMeetupOAuthClient Client { get; }
+        public MeetupOAuthClient Client { get; }
 
         #endregion
 
         #region Constructors
 
-        internal MeetupGroupsRawEndpoint(IMeetupOAuthClient client) {
+        internal MeetupGroupsRawEndpoint(MeetupOAuthClient client) {
             Client = client;
         }
 
