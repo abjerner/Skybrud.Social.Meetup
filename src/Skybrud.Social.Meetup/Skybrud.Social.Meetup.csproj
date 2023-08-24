@@ -3,26 +3,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45;net46;net47</TargetFrameworks>
     <RunBuildTargets>true</RunBuildTargets>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>
-    <RootNamespace>Skybrud.Social.Meetup</RootNamespace>
-    <Version>1.0.0-beta005</Version>
-    <Company>Skybrud.dk a/s</Company>
-    <Product>Skybrud.Social</Product>
+    <VersionPrefix>1.0.0-beta005</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2019</Copyright>
-    <Description>Service implementation for the Meetup.com API.</Description>
-    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Meetup</RepositoryUrl>
+    <Company>Limbo</Company>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
+    <Description>.NET API wrapper and authentication package for the Meetup.com API.</Description>
   </PropertyGroup>
-  
+
   <PropertyGroup>
-    <PackageTags>Meetup, API, Skybrud, Social, JSON</PackageTags>
-    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Meetup/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Meetup</PackageProjectUrl>
-    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <PackageId>Skybrud.Social.Meetup</PackageId>
+    <PackageTags>Meetup, API, Skybrud, Social, JSON, Limbo, GraphQL</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://social.skybrud.dk/meetup/</PackageProjectUrl>
+    <PackageIcon>Limbo.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Meetup</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
@@ -33,11 +35,18 @@
     <DefineConstants>NET_FRAMEWORK</DefineConstants>
   </PropertyGroup>
 
+  <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials" Version="1.1.36" />
     <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.16" />
   </ItemGroup>
+  
+  <!-- Include package icon and README for the NuGet -->
+  <ItemGroup>
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
+  <!-- Generate XML documentation -->
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Social.Meetup.xml</DocumentationFile>
   </PropertyGroup>
