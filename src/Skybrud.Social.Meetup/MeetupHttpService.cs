@@ -10,14 +10,14 @@ namespace Skybrud.Social.Meetup {
     /// <example>
     /// Initializing a new instance for public API access (no authentication):
     /// <code>
-    /// MeetupService meetup = new MeetupService();
+    /// MeetupHttpService meetup = new MeetupHttpService();
     /// </code>
     /// </example>
     /// <example>
     /// If you already have an OAuth 2.0 access token you wish to use for authentication, you can instead use the
     /// static <see cref="CreateFromAccessToken"/> method.
     /// <code>
-    /// MeetupService meetup1 = MeetupService.CreateFromAccessToken("your access token");
+    /// MeetupHttpService meetup = MeetupHttpService.CreateFromAccessToken("your access token");
     /// </code>
     /// </example>
     public class MeetupHttpService {
@@ -30,12 +30,12 @@ namespace Skybrud.Social.Meetup {
         public MeetupOAuthClient Client { get; }
 
         /// <summary>
-        /// Gets a reference to the raw <strong>Events</strong> endpoint.
+        /// Gets a reference to the <strong>Events</strong> endpoint.
         /// </summary>
         public MeetupEventsEndpoint Events { get; }
 
         /// <summary>
-        /// Gets a reference to the raw <strong>Groups</strong> endpoint.
+        /// Gets a reference to the <strong>Groups</strong> endpoint.
         /// </summary>
         public MeetupGroupsEndpoint Groups { get; }
 

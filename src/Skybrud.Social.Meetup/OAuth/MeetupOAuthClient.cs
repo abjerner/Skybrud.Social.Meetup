@@ -8,14 +8,14 @@ using Skybrud.Social.Meetup.Responses.Authentication;
 using Skybrud.Social.Meetup.Scopes;
 
 namespace Skybrud.Social.Meetup.OAuth {
-    
+
     /// <summary>
     /// OAuth 2.0 client for the Meetup.com API.
     /// </summary>
     public class MeetupOAuthClient : HttpClient {
 
         #region Properties
-        
+
         #region OAuth
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// Gets or sets the client secret of the app.
         /// </summary>
         public string ClientSecret { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the redirect URI of your application.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         #endregion
 
         #region Member methods
-        
+
         /// <summary>
         /// Generates the authorization URL using the specified <paramref name="state"/> and the default scope.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         public string GetAuthorizationUrl(string state, MeetupScopeCollection scope) {
             return GetAuthorizationUrl(state, scope?.ToString());
         }
-        
+
         /// <summary>
         /// Generates the authorization URL using the specified <paramref name="state"/> and <paramref name="scope"/>.
         /// </summary>
@@ -119,7 +119,7 @@ namespace Skybrud.Social.Meetup.OAuth {
 
             // Generate the authorization URL
             return "https://secure.meetup.com/oauth2/authorize?" + query;
-        
+
         }
 
 
@@ -148,7 +148,7 @@ namespace Skybrud.Social.Meetup.OAuth {
             // Make the call to the API
             IHttpResponse response = HttpUtils.Requests
                 .Post("https://secure.meetup.com/oauth2/access", null, data);
-            
+
             // Parse the response
             return MeetupTokenResponse.ParseResponse(response);
 
@@ -171,7 +171,7 @@ namespace Skybrud.Social.Meetup.OAuth {
             if (!string.IsNullOrWhiteSpace(AccessToken)) {
                 request.Headers.Authorization = $"Bearer {AccessToken}";
             }
-            
+
         }
 
         #endregion
