@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
@@ -8,7 +9,7 @@ using Skybrud.Social.Meetup.Models.Photos;
 using Skybrud.Social.Meetup.Models.Venues;
 
 namespace Skybrud.Social.Meetup.Models.Events {
-    
+
     /// <summary>
     /// Class representing a Meetup.com event.
     /// </summary>
@@ -22,7 +23,7 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// <summary>
         /// Gets a timestamp for when the event was created.
         /// </summary>
-        public EssentialsTime Created { get; }
+        public EssentialsTime? Created { get; }
 
         /// <summary>
         /// Gets the scheduled duration of the event if an end time has been specified by the organizer.
@@ -45,16 +46,16 @@ namespace Skybrud.Social.Meetup.Models.Events {
         public string Name { get; }
 
         // TODO: Add support for the "rsvp_limit"
-        
+
         // TODO: Add support for the "date_in_series_pattern"
-        
+
         // TODO: Add support for the "status"
 
         /// <summary>
         /// Gets the start time of the event.
         /// </summary>
-        public EssentialsTime Time { get; }
-        
+        public EssentialsTime? Time { get; }
+
         // TODO: Add support for the "local_date"
 
         // TODO: Add support for the "local_time"
@@ -62,7 +63,7 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// <summary>
         /// Gets a timestamp for when the event was last modified.
         /// </summary>
-        public EssentialsTime Updated { get; }
+        public EssentialsTime? Updated { get; }
 
         // TODO: Add support for the "utc_offset"
 
@@ -78,7 +79,7 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// <summary>
         /// Gets a refence to the venue of the meetup. Use <see cref="HasVenue"/> to check whether the event has a venue.
         /// </summary>
-        public MeetupVenue Venue { get; }
+        public MeetupVenue? Venue { get; }
 
         /// <summary>
         /// Gets whether the event has a venue.
@@ -104,10 +105,10 @@ namespace Skybrud.Social.Meetup.Models.Events {
 
         /// <summary>
         /// Gets the featured photo of the event, or <c>null</c> if not present.
-        /// 
+        ///
         /// Notice that this property requires the <see cref="MeetupEventFields.FeaturedPhoto"/> field to be part of the request.
         /// </summary>
-        public MeetupPhoto FeaturedPhoto { get; }
+        public MeetupPhoto? FeaturedPhoto { get; }
 
         /// <summary>
         /// Gets whether the event has a featured photo.
@@ -121,14 +122,14 @@ namespace Skybrud.Social.Meetup.Models.Events {
         private MeetupEvent(JObject obj) : base(obj) {
             Created = obj.HasValue("created") ? obj.GetInt64("created", ParseUnixTimestamp) : null;
             Duration = obj.GetDouble("duration", TimeSpan.FromMilliseconds);
-            Id = obj.GetString("id");
-            Name = obj.GetString("name");
+            Id = obj.GetString("id")!;
+            Name = obj.GetString("name")!;
             Time = obj.HasValue("time") ? obj.GetInt64("time", ParseUnixTimestamp) : null;
             Updated = obj.HasValue("updated") ? obj.GetInt64("updated", ParseUnixTimestamp) : null;
-            Group = obj.GetObject("group", MeetupGroup.Parse);
+            Group = obj.GetObject("group", MeetupGroup.Parse)!;
             Venue = obj.GetObject("venue", MeetupVenue.Parse);
-            Link = obj.GetString("link");
-            Description = obj.GetString("description");
+            Link = obj.GetString("link")!;
+            Description = obj.GetString("description")!;
             Visibility = obj.HasValue("visiblity") ? obj.GetEnum<MeetupEventVisibility>("visibility") : MeetupEventVisibility.Unspecified;
             FeaturedPhoto = obj.GetObject("featured_photo", MeetupPhoto.Parse);
         }
@@ -142,7 +143,8 @@ namespace Skybrud.Social.Meetup.Models.Events {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="MeetupEvent"/>.</returns>
-        public static MeetupEvent Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static MeetupEvent? Parse(JObject? obj) {
             return obj == null ? null : new MeetupEvent(obj);
         }
 

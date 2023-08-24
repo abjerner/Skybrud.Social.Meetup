@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Social.Meetup.Models.Members {
 
@@ -44,7 +45,8 @@ namespace Skybrud.Social.Meetup.Models.Members {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="MeetupMemberBirthday"/>.</returns>
-        public static MeetupMemberBirthday Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static MeetupMemberBirthday? Parse(JObject? obj) {
             return obj == null ? null : new MeetupMemberBirthday(obj);
         }
 

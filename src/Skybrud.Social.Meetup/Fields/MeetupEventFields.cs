@@ -10,7 +10,7 @@ namespace Skybrud.Social.Meetup.Fields {
         /// <summary>
         /// Field indicating that the featured photo should be returned.
         /// </summary>
-        public static readonly MeetupField FeaturedPhoto = new MeetupField("featured_photo");
+        public static readonly MeetupField FeaturedPhoto = new("featured_photo");
 
         // TODO: Add support for the remaining fields
 

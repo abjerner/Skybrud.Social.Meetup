@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
+using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Social.Meetup.Scopes {
-    
+
     /// <summary>
     /// Class representing a scope of the Meetup API.
     /// </summary>
@@ -10,7 +10,7 @@ namespace Skybrud.Social.Meetup.Scopes {
 
         #region Private fields
 
-        private static readonly Dictionary<string, MeetupScope> Scopes = new Dictionary<string, MeetupScope>();
+        private static readonly Dictionary<string, MeetupScope> Scopes = new();
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// <summary>
         /// Gets the description of the scope.
         /// </summary>
-        public string Description { get; }
+        public string? Description { get; }
 
         #endregion
 
@@ -36,7 +36,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// <param name="name">The name of the scope.</param>
         public MeetupScope(string name) {
             Name = name;
-            Description = string.Empty;
+            Description = null;
         }
 
         /// <summary>
@@ -44,9 +44,9 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// </summary>
         /// <param name="name">The name of the scope.</param>
         /// <param name="description">The description of the scope.</param>
-        public MeetupScope(string name, string description) {
+        public MeetupScope(string name, string? description) {
             Name = name;
-            Description = string.IsNullOrWhiteSpace(description) ? string.Empty : description.Trim();
+            Description = description?.Trim().NullIfWhiteSpace();
         }
 
         #endregion
@@ -70,7 +70,7 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// </summary>
         /// <param name="name">The name of the scope.</param>
         /// <param name="description">The description of the scope.</param>
-        internal static MeetupScope RegisterScope(string name, string description = null) {
+        internal static MeetupScope RegisterScope(string name, string? description = null) {
             MeetupScope scope = new MeetupScope(name, description);
             Scopes.Add(scope.Name, scope);
             return scope;
@@ -81,8 +81,8 @@ namespace Skybrud.Social.Meetup.Scopes {
         /// </summary>
         /// <param name="name">The name of the scope.</param>
         /// <returns>Gets a scope matching the specified <paramref name="name"/>, or <c>null</c> if not found.</returns>
-        public static MeetupScope GetScope(string name) {
-            return Scopes.TryGetValue(name, out MeetupScope scope) ? scope : null;
+        public static MeetupScope? GetScope(string name) {
+            return Scopes.TryGetValue(name, out MeetupScope? scope) ? scope : null;
         }
 
         /// <summary>

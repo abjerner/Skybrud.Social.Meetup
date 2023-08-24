@@ -17,7 +17,7 @@ namespace Skybrud.Social.Meetup.Exceptions {
         public MeetupOAuthException(IHttpResponse response) : base(response) {
 
             if (response.ContentType.StartsWith("application/x-www-form-urlencoded")) {
-                IHttpQueryString query = HttpQueryString.ParseQueryString(response.Body);
+                IHttpQueryString query = HttpQueryString.Parse(response.Body);
                 Problem = query["oauth_problem"];
             }
 

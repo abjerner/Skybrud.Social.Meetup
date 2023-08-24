@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Meetup.Fields {
-    
+
     /// <summary>
     /// Class representing a field in the Meetup API.
     /// </summary>

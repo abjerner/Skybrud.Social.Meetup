@@ -20,17 +20,17 @@ namespace Skybrud.Social.Meetup.Exceptions {
         /// <summary>
         /// Gets the details of the error, or <c>null</c> if not present.
         /// </summary>
-        public string Details { get; protected set; }
+        public string? Details { get; protected set; }
 
         /// <summary>
         /// Gets the code of the error, or <c>null</c> if not present.
         /// </summary>
-        public string Code { get; protected set; }
+        public string? Code { get; protected set; }
 
         /// <summary>
         /// Gets the problem of the error, or <c>null</c> if not present.
         /// </summary>
-        public string Problem { get; protected set; }
+        public string? Problem { get; protected set; }
 
         #endregion
 
@@ -43,7 +43,7 @@ namespace Skybrud.Social.Meetup.Exceptions {
         public MeetupHttpException(IHttpResponse response) : base("Invalid response received from the Meetup API (Status: " + (int) response.StatusCode + ")") {
 
             Response = response;
-            
+
             switch (response.ContentType.Split(';')[0]) {
 
                 case "application/json":

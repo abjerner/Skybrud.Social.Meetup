@@ -4,6 +4,8 @@ using Skybrud.Essentials.Http;
 using Skybrud.Social.Meetup.OAuth;
 using Skybrud.Social.Meetup.Options.Events;
 
+#pragma warning disable CS0618
+
 namespace Skybrud.Social.Meetup.Endpoints.Raw {
 
     /// <summary>

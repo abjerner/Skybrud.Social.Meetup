@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Social.Meetup.Models.Members {
 
@@ -30,8 +31,8 @@ namespace Skybrud.Social.Meetup.Models.Members {
         #region Constructors
 
         private MeetupMemberTopic(JObject obj) : base(obj) {
-            UrlKey = obj.GetString("urlkey");
-            Name = obj.GetString("name");
+            UrlKey = obj.GetString("urlkey")!;
+            Name = obj.GetString("name")!;
             Id = obj.GetInt32("id");
         }
 
@@ -44,7 +45,8 @@ namespace Skybrud.Social.Meetup.Models.Members {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="MeetupMemberTopic"/>.</returns>
-        public static MeetupMemberTopic Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static MeetupMemberTopic? Parse(JObject? obj) {
             return obj == null ? null : new MeetupMemberTopic(obj);
         }
 

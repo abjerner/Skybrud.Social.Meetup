@@ -1,18 +1,19 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Essentials.Locations;
+using Skybrud.Essentials.Maps.Geometry;
 using Skybrud.Social.Meetup.Models.Events;
 using Skybrud.Social.Meetup.Models.Photos;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Social.Meetup.Models.Groups {
-    
+
     /// <summary>
     /// Class representing a Meetup.com group.
     /// </summary>
     /// <see>
     ///     <cref>https://www.meetup.com/meetup_api/docs/:urlname/#get</cref>
     /// </see>
-    public class MeetupGroup : MeetupObject, ILocation {
+    public class MeetupGroup : MeetupObject, IPoint {
 
         #region Properties
 
@@ -54,7 +55,7 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the next event of the group, or <c>null</c> if there are no upcoming events.
         /// </summary>
-        public MeetupEvent NextEvent { get; }
+        public MeetupEvent? NextEvent { get; }
 
         /// <summary>
         /// Gets whether group has an upcoming event.
@@ -64,7 +65,7 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the group photo of the group.
         /// </summary>
-        public MeetupPhoto GroupPhoto { get; }
+        public MeetupPhoto? GroupPhoto { get; }
 
         /// <summary>
         /// Gets whether the group has a group photo.
@@ -74,7 +75,7 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// <summary>
         /// Gets the primary photo of the group.
         /// </summary>
-        public MeetupPhoto KeyPhoto { get; }
+        public MeetupPhoto? KeyPhoto { get; }
 
         /// <summary>
         /// Gets whether the group has a key photo.
@@ -87,10 +88,10 @@ namespace Skybrud.Social.Meetup.Models.Groups {
 
         private MeetupGroup(JObject obj) : base(obj) {
             Id = obj.GetInt64("id");
-            Name = obj.GetString("name");
-            Link = obj.GetString("link");
-            UrlName = obj.GetString("urlname");
-            Description = obj.GetString("description");
+            Name = obj.GetString("name")!;
+            Link = obj.GetString("link")!;
+            UrlName = obj.GetString("urlname")!;
+            Description = obj.GetString("description")!;
             Latitude = obj.GetDouble("lat");
             Longitude = obj.GetDouble("lon");
             NextEvent = obj.GetObject("next_event", MeetupEvent.Parse);
@@ -107,7 +108,8 @@ namespace Skybrud.Social.Meetup.Models.Groups {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="MeetupGroup"/>.</returns>
-        public static MeetupGroup Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static MeetupGroup? Parse(JObject? obj) {
             return obj == null ? null : new MeetupGroup(obj);
         }
 

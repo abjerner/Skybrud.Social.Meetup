@@ -5,7 +5,8 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45;net46;net47</TargetFrameworks>
     <RunBuildTargets>true</RunBuildTargets>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>11.0</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -13,6 +14,7 @@
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
+    <Product>Skybrud.Social</Product>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Description>.NET API wrapper and authentication package for the Meetup.com API.</Description>
   </PropertyGroup>
@@ -37,10 +39,11 @@
 
   <!-- Include NuGet dependencies -->
   <ItemGroup>
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.36" />
-    <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.16" />
+    <PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.50" />
+    <PackageReference Include="Skybrud.Essentials.Http" Version="1.1.4" />
   </ItemGroup>
-  
+
   <!-- Include package icon and README for the NuGet -->
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />

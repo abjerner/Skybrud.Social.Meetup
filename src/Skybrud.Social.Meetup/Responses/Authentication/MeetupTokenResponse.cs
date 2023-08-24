@@ -11,7 +11,7 @@ namespace Skybrud.Social.Meetup.Responses.Authentication {
         #region Constructors
 
         private MeetupTokenResponse(IHttpResponse response) : base(response) {
-            Body = ParseJsonObject(response.Body, MeetupToken.Parse);
+            Body = ParseJsonObject(response.Body, MeetupToken.Parse)!;
         }
 
         #endregion
@@ -24,7 +24,7 @@ namespace Skybrud.Social.Meetup.Responses.Authentication {
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         /// <returns>An instance of <see cref="MeetupTokenResponse"/> representing the response.</returns>
         public static MeetupTokenResponse ParseResponse(IHttpResponse response) {
-            return response == null ? null : new MeetupTokenResponse(response);
+            return new MeetupTokenResponse(response);
         }
 
         #endregion

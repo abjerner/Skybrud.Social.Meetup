@@ -17,9 +17,8 @@ namespace Skybrud.Social.Meetup.Responses {
 
             // Skip error checking if the server responds with an OK status code
             if (response.StatusCode == HttpStatusCode.OK) return;
-            
-            throw new MeetupHttpException(response);
 
+            throw new MeetupHttpException(response);
 
         }
 
@@ -35,7 +34,7 @@ namespace Skybrud.Social.Meetup.Responses {
         /// <summary>
         /// Gets the body of the response.
         /// </summary>
-        public T Body { get; protected set; }
+        public T Body { get; protected set; } = default!;
 
         #endregion
 

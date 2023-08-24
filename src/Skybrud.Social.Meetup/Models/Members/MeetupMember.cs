@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
@@ -11,7 +11,7 @@ namespace Skybrud.Social.Meetup.Models.Members {
     public class MeetupMember : MeetupObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the bio of the member. Use <see cref="HasBio"/> to check whether the member has specified a bio.
         /// </summary>
@@ -26,7 +26,7 @@ namespace Skybrud.Social.Meetup.Models.Members {
         /// Gets the birthday of the member, or <c>null</c> if not specified. Use <see cref="HasBirthday"/> to check
         /// whether the member has specified a bio.
         /// </summary>
-        public MeetupMemberBirthday Birthday { get; }
+        public MeetupMemberBirthday? Birthday { get; }
 
         /// <summary>
         /// Gets whether the member has specified a birthday.
@@ -71,7 +71,7 @@ namespace Skybrud.Social.Meetup.Models.Members {
         /// <summary>
         /// Gets a timestamp for when the member joined Meetup.
         /// </summary>
-        public EssentialsTime Joined { get; }
+        public EssentialsTime? Joined { get; }
 
         /// <summary>
         /// Gets the language of the member.
@@ -132,21 +132,21 @@ namespace Skybrud.Social.Meetup.Models.Members {
         #region Constructors
 
         private MeetupMember(JObject obj) : base(obj) {
-            Bio = obj.GetString("bio");
-            Birthday = obj.GetObject("birthday", MeetupMemberBirthday.Parse);
-            Country = obj.GetString("country");
-            City = obj.GetString("city");
-            State = obj.GetString("state");
+            Bio = obj.GetString("bio")!;
+            Birthday = obj.GetObject("birthday", MeetupMemberBirthday.Parse)!;
+            Country = obj.GetString("country")!;
+            City = obj.GetString("city")!;
+            State = obj.GetString("state")!;
             Gender = obj.GetEnum("gender", MeetupGender.None);
-            Hometown = obj.GetString("hometown");
+            Hometown = obj.GetString("hometown")!;
             Id = obj.GetInt32("id");
             Joined = obj.HasValue("joined") ? obj.GetInt64("joined", ParseUnixTimestamp) : null;
-            Language = obj.GetString("lang");
+            Language = obj.GetString("lang")!;
             Latitude = obj.GetDouble("lat");
             Longitude = obj.GetDouble("lon");
-            Link = obj.GetString("link");
-            Name = obj.GetString("name");
-            Topics = obj.GetArrayItems("topics", MeetupMemberTopic.Parse);
+            Link = obj.GetString("link")!;
+            Name = obj.GetString("name")!;
+            Topics = obj.GetArrayItems("topics", MeetupMemberTopic.Parse)!;
         }
 
         #endregion
@@ -158,7 +158,8 @@ namespace Skybrud.Social.Meetup.Models.Members {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="MeetupMember"/>.</returns>
-        public static MeetupMember Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static MeetupMember? Parse(JObject? obj) {
             return obj == null ? null : new MeetupMember(obj);
         }
 

@@ -1,4 +1,5 @@
 using System;
+using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Client;
@@ -21,22 +22,22 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// <summary>
         /// Gets or sets the client ID of the app.
         /// </summary>
-        public string ClientId { get; set; }
+        public string? ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client secret of the app.
         /// </summary>
-        public string ClientSecret { get; set; }
+        public string? ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or sets the redirect URI of your application.
         /// </summary>
-        public string RedirectUri { get; set; }
+        public string? RedirectUri { get; set; }
 
         /// <summary>
         /// Gets or sets the access token.
         /// </summary>
-        public string AccessToken { get; set; }
+        public string? AccessToken { get; set; }
 
         #endregion
 
@@ -78,7 +79,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// <param name="state">The state to send to Meetups's OAuth login page.</param>
         /// <returns>An authorization URL based on <paramref name="state"/>.</returns>
         public string GetAuthorizationUrl(string state) {
-            return GetAuthorizationUrl(state, new string[0]);
+            return GetAuthorizationUrl(state, ArrayUtils.Empty<string>());
         }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// <param name="state">The state to send to Meetups's OAuth login page.</param>
         /// <param name="scope">The scope of the application.</param>
         /// <returns>An authorization URL based on <paramref name="state"/> and <paramref name="scope"/>.</returns>
-        public string GetAuthorizationUrl(string state, MeetupScopeCollection scope) {
+        public string GetAuthorizationUrl(string state, MeetupScopeCollection? scope) {
             return GetAuthorizationUrl(state, scope?.ToString());
         }
 
@@ -97,7 +98,7 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// <param name="state">The state to send to Meetups's OAuth login page.</param>
         /// <param name="scope">The scope of the application.</param>
         /// <returns>An authorization URL based on <paramref name="state"/> and <paramref name="scope"/>.</returns>
-        public string GetAuthorizationUrl(string state, params string[] scope) {
+        public string GetAuthorizationUrl(string state, params string?[]? scope) {
 
             // Some validation
             if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
@@ -109,12 +110,12 @@ namespace Skybrud.Social.Meetup.OAuth {
             }
 
             IHttpQueryString query = new HttpQueryString();
-            query.Add("client_id", ClientId);
-            query.Add("redirect_uri", RedirectUri);
+            query.Add("client_id", ClientId!);
+            query.Add("redirect_uri", RedirectUri!);
             query.Add("response_type", "code");
             query.Add("state", state);
 
-            string s = string.Join("+", scope ?? new string[0]);
+            string s = string.Join("+", scope ?? ArrayUtils.Empty<string>());
             if (!string.IsNullOrWhiteSpace(s)) query.Add("scope", s);
 
             // Generate the authorization URL
@@ -137,17 +138,17 @@ namespace Skybrud.Social.Meetup.OAuth {
             if (string.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize the query string
-            HttpPostData data = new HttpPostData {
-                {"client_id", ClientId},
-                {"client_secret", ClientSecret},
+            HttpPostData data = new() {
+                {"client_id", ClientId!},
+                {"client_secret", ClientSecret!},
                 {"grant_type", "authorization_code"},
-                {"redirect_uri", RedirectUri},
+                {"redirect_uri", RedirectUri!},
                 {"code", authCode}
             };
 
             // Make the call to the API
             IHttpResponse response = HttpUtils.Requests
-                .Post("https://secure.meetup.com/oauth2/access", null, data);
+                .Post("https://secure.meetup.com/oauth2/access", null!, data);
 
             // Parse the response
             return MeetupTokenResponse.ParseResponse(response);

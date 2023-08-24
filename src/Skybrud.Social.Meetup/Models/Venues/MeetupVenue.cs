@@ -1,13 +1,19 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Essentials.Locations;
+using Skybrud.Essentials.Maps.Geometry;
+
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+
+#pragma warning disable CS8601
+#pragma warning disable CS8603
+#pragma warning disable CS8618
 
 namespace Skybrud.Social.Meetup.Models.Venues {
-    
+
     /// <summary>
     /// Class describing a venue of an event.
     /// </summary>
-    public class MeetupVenue : MeetupObject, ILocation {
+    public class MeetupVenue : MeetupObject, IPoint {
 
         #region Properties
 

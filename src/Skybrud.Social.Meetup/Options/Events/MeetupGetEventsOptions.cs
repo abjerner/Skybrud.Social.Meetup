@@ -4,6 +4,9 @@ using Skybrud.Essentials.Http.Options;
 using Skybrud.Essentials.Strings;
 using Skybrud.Social.Meetup.Fields;
 
+#pragma warning disable CS0618
+#pragma warning disable CS8618
+
 namespace Skybrud.Social.Meetup.Options.Events {
 
     /// <see>
@@ -39,7 +42,7 @@ namespace Skybrud.Social.Meetup.Options.Events {
         /// </summary>
         /// <value>The fields.</value>
         public MeetupFieldsCollection Fields { get; set; }
-        
+
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="MeetupGetEventsOptions"/> sorts results in descending order. Defaults to false.
         /// </summary>
@@ -130,16 +133,16 @@ namespace Skybrud.Social.Meetup.Options.Events {
         /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
         /// </summary>
         public IHttpQueryString GetQueryString() {
-            
+
             IHttpQueryString query = new HttpQueryString();
-            
+
             if (Desc) query.Add("desc", "true");
             if (Fields?.Count > 0) query.Add("fields", Fields);
             if (Page > 0) query.Add("page", Page);
             if (Offset > 0) query.Add("offset", Offset);
             // TODO: Add support for the "scroll" parameter
 
-            if (Status != null && Status.Length > 0) query.Add("status", string.Join(",", from status in Status select StringUtils.ToCamelCase(status))); 
+            if (Status != null && Status.Length > 0) query.Add("status", string.Join(",", from status in Status select StringUtils.ToCamelCase(status)));
 
             return query;
 

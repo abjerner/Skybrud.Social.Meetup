@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Skybrud.Social.Meetup.Fields {
-    
+
     /// <summary>
     /// Class representing a collection of fields in the Meetup API.
     /// </summary>
@@ -12,7 +12,7 @@ namespace Skybrud.Social.Meetup.Fields {
 
         #region Private fields
 
-        private readonly List<MeetupField> _fields = new List<MeetupField>();
+        private readonly List<MeetupField> _fields = new();
 
         #endregion
 
@@ -97,8 +97,8 @@ namespace Skybrud.Social.Meetup.Fields {
         /// </summary>
         /// <param name="fields">The string of fields the collection should be based on.</param>
         /// <returns>A new collection based on a string of <paramref name="fields"/>.</returns>
-        public static implicit operator MeetupFieldsCollection(string fields) {
-            MeetupFieldsCollection collection = new MeetupFieldsCollection();
+        public static implicit operator MeetupFieldsCollection(string? fields) {
+            MeetupFieldsCollection collection = new();
             foreach (string name in (fields ?? string.Empty).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) {
                 collection.Add(name);
             }
@@ -111,7 +111,7 @@ namespace Skybrud.Social.Meetup.Fields {
         /// <param name="fields">The array of fields the collection should be based on.</param>
         /// <returns>A new collection based on an array of <paramref name="fields"/>.</returns>
         public static implicit operator MeetupFieldsCollection(string[] fields) {
-            MeetupFieldsCollection collection = new MeetupFieldsCollection();
+            MeetupFieldsCollection collection = new();
             foreach (string name in fields) {
                 collection.Add(name);
             }

@@ -12,13 +12,13 @@ namespace Skybrud.Social.Meetup.Responses.Events {
         #region Constructors
 
         private MeetupGetEventResponse(IHttpResponse response) : base(response) {
-            Body = ParseJsonObject(response.Body, MeetupEvent.Parse);
+            Body = ParseJsonObject(response.Body, MeetupEvent.Parse)!;
         }
 
         #endregion
 
         #region Static methods
-        
+
         /// <summary>
         /// Parses the specified <paramref name="response"/> into an instance of <see cref="MeetupGetEventResponse"/>.
         /// </summary>
