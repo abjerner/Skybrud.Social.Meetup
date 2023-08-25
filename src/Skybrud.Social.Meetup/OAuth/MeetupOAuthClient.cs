@@ -4,6 +4,7 @@ using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Client;
 using Skybrud.Essentials.Http.Collections;
+using Skybrud.Social.Meetup.Endpoints;
 using Skybrud.Social.Meetup.Endpoints.Raw;
 using Skybrud.Social.Meetup.Responses.Authentication;
 using Skybrud.Social.Meetup.Scopes;
@@ -56,6 +57,11 @@ namespace Skybrud.Social.Meetup.OAuth {
         /// </summary>
         public MeetupMembersRawEndpoint Members { get; }
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>GraphQL</strong> endpoint.
+        /// </summary>
+        public MeetupGraphQlRawEndpoint GraphQl { get; }
+
         #endregion
 
         #region Constructors
@@ -67,6 +73,7 @@ namespace Skybrud.Social.Meetup.OAuth {
             Events = new MeetupEventsRawEndpoint(this);
             Groups = new MeetupGroupsRawEndpoint(this);
             Members = new MeetupMembersRawEndpoint(this);
+            GraphQl = new MeetupGraphQlRawEndpoint(this);
         }
 
         #endregion

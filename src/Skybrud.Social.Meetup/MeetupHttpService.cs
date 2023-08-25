@@ -39,6 +39,11 @@ namespace Skybrud.Social.Meetup {
         /// </summary>
         public MeetupGroupsEndpoint Groups { get; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>GraphQL</strong> endpoint.
+        /// </summary>
+        public MeetupGraphQlEndpoint GraphQl { get; }
+
         #endregion
 
         #region Constructors
@@ -52,6 +57,7 @@ namespace Skybrud.Social.Meetup {
             Client = client;
             Events = new MeetupEventsEndpoint(this);
             Groups = new MeetupGroupsEndpoint(this);
+            GraphQl = new MeetupGraphQlEndpoint(this);
         }
 
         #endregion
