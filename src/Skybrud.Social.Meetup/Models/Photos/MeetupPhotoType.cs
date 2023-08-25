@@ -1,20 +1,18 @@
-﻿namespace Skybrud.Social.Meetup.Models.Photos {
-    
+﻿namespace Skybrud.Social.Meetup.Models.Photos; 
+
+/// <summary>
+/// Enum class representing the type of a photo.
+/// </summary>
+public enum MeetupPhotoType {
+
     /// <summary>
-    /// Enum class representing the type of a photo.
+    /// Indicates that the photo is from an event.
     /// </summary>
-    public enum MeetupPhotoType {
+    Event,
 
-        /// <summary>
-        /// Indicates that the photo is from an event.
-        /// </summary>
-        Event,
-
-        /// <summary>
-        /// Indicates that the photo is of a member.
-        /// </summary>
-        Member
-
-    }
+    /// <summary>
+    /// Indicates that the photo is of a member.
+    /// </summary>
+    Member
 
 }

@@ -1,48 +1,46 @@
 ﻿using Skybrud.Social.Meetup.Endpoints.Raw;
 using Skybrud.Social.Meetup.Responses.Groups;
 
-namespace Skybrud.Social.Meetup.Endpoints {
+namespace Skybrud.Social.Meetup.Endpoints; 
+
+/// <summary>
+/// Implementation of the <strong>Groups</strong> endpoint.
+/// </summary>
+public class MeetupGroupsEndpoint {
+
+    #region Properties
 
     /// <summary>
-    /// Implementation of the <strong>Groups</strong> endpoint.
+    /// Gets a reference to the parent service.
     /// </summary>
-    public class MeetupGroupsEndpoint {
+    public MeetupHttpService Service { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets a reference to the raw endpoint.
+    /// </summary>
+    public MeetupGroupsRawEndpoint Raw => Service.Client.Groups;
 
-        /// <summary>
-        /// Gets a reference to the parent service.
-        /// </summary>
-        public MeetupHttpService Service { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets a reference to the raw endpoint.
-        /// </summary>
-        public MeetupGroupsRawEndpoint Raw => Service.Client.Groups;
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        internal MeetupGroupsEndpoint(MeetupHttpService service) {
-            Service = service;
-        }
-
-        #endregion
-
-        #region Member methods
-
-        /// <summary>
-        /// Gets information about the group with the specified <paramref name="urlname"/>.
-        /// </summary>
-        /// <param name="urlname">The URL name/slug of the group.</param>
-        /// <returns>An instance of <see cref="MeetupGetGroupResponse"/> representing the response.</returns>
-        public MeetupGetGroupResponse GetGroup(string urlname) {
-            return MeetupGetGroupResponse.ParseResponse(Raw.GetGroup(urlname));
-        }
-
-        #endregion
-
+    internal MeetupGroupsEndpoint(MeetupHttpService service) {
+        Service = service;
     }
+
+    #endregion
+
+    #region Member methods
+
+    /// <summary>
+    /// Gets information about the group with the specified <paramref name="urlname"/>.
+    /// </summary>
+    /// <param name="urlname">The URL name/slug of the group.</param>
+    /// <returns>An instance of <see cref="MeetupGetGroupResponse"/> representing the response.</returns>
+    public MeetupGetGroupResponse GetGroup(string urlname) {
+        return MeetupGetGroupResponse.ParseResponse(Raw.GetGroup(urlname));
+    }
+
+    #endregion
 
 }

@@ -2,36 +2,34 @@
 using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Essentials.Time;
 
-namespace Skybrud.Social.Meetup.Models {
+namespace Skybrud.Social.Meetup.Models; 
+
+/// <summary>
+/// Class representing an object received from the Meetup API.
+/// </summary>
+public class MeetupObject : JsonObjectBase {
+
+    #region Constructors
 
     /// <summary>
-    /// Class representing an object received from the Meetup API.
+    /// Initializes a new instance from the specified <paramref name="obj"/>.
     /// </summary>
-    public class MeetupObject : JsonObjectBase {
+    /// <param name="obj">The instance of <see cref="JObject"/> representing the object.</param>
+    protected MeetupObject(JObject obj) : base(obj) { }
 
-        #region Constructors
+    #endregion
 
-        /// <summary>
-        /// Initializes a new instance from the specified <paramref name="obj"/>.
-        /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> representing the object.</param>
-        protected MeetupObject(JObject obj) : base(obj) { }
+    #region Member methods
 
-        #endregion
-
-        #region Member methods
-
-        /// <summary>
-        /// Parses the specified millisecond UNIX timestamp into an instance of <see cref="EssentialsTime"/>.
-        /// </summary>
-        /// <param name="timestamp">The timestamp to be parsed.</param>
-        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-        protected EssentialsTime ParseUnixTimestamp(long timestamp) {
-            return EssentialsTime.FromUnixTimeMilliseconds(timestamp);
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Parses the specified millisecond UNIX timestamp into an instance of <see cref="EssentialsTime"/>.
+    /// </summary>
+    /// <param name="timestamp">The timestamp to be parsed.</param>
+    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+    protected EssentialsTime ParseUnixTimestamp(long timestamp) {
+        return EssentialsTime.FromUnixTimeMilliseconds(timestamp);
     }
+
+    #endregion
 
 }

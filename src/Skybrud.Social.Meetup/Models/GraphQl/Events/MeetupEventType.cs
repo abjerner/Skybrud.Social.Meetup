@@ -1,23 +1,21 @@
-﻿namespace Skybrud.Social.Meetup.Models.GraphQl.Events {
+﻿namespace Skybrud.Social.Meetup.Models.GraphQl.Events; 
+
+/// <summary>
+/// Enum class representing the type of an event.
+/// </summary>
+/// <see>
+///     <cref>https://www.meetup.com/api/schema/#EventType</cref>
+/// </see>
+public enum MeetupEventType {
 
     /// <summary>
-    /// Enum class representing the type of an event.
+    /// Indicates a online event.
     /// </summary>
-    /// <see>
-    ///     <cref>https://www.meetup.com/api/schema/#EventType</cref>
-    /// </see>
-    public enum MeetupEventType {
+    Online,
 
-        /// <summary>
-        /// Indicates a online event.
-        /// </summary>
-        Online,
-
-        /// <summary>
-        /// Indicates a physical event.
-        /// </summary>
-        Physical
-
-    }
+    /// <summary>
+    /// Indicates a physical event.
+    /// </summary>
+    Physical
 
 }
