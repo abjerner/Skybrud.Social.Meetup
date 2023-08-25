@@ -1,6 +1,7 @@
 ﻿using System;
 using Skybrud.Social.Meetup.Endpoints;
 using Skybrud.Social.Meetup.OAuth;
+using Skybrud.Social.Meetup.Responses.Authentication;
 
 namespace Skybrud.Social.Meetup {
 
@@ -90,6 +91,37 @@ namespace Skybrud.Social.Meetup {
         public static MeetupHttpService CreateFromAccessToken(string accessToken) {
             if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
             return new MeetupHttpService(new MeetupOAuthClient { AccessToken = accessToken });
+        }
+
+        /// <summary>
+        /// Initializes a new instance based on the specified refresh token. The refresh token is used for making a
+        /// call to the Meetup API to get a new access token.
+        /// </summary>
+        /// <param name="clientId">The client ID.</param>
+        /// <param name="clientSecret">The client secret.</param>
+        /// <param name="refreshToken">The refresh token.</param>
+        public static MeetupHttpService CreateFromRefreshToken(string clientId, string clientSecret, string refreshToken) {
+
+            // Input validation
+            if (string.IsNullOrWhiteSpace(clientId)) throw new ArgumentNullException(nameof(clientId));
+            if (string.IsNullOrWhiteSpace(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+            if (string.IsNullOrWhiteSpace(refreshToken)) throw new ArgumentNullException(nameof(refreshToken));
+
+            // Initialize a new OAuth client
+            MeetupOAuthClient client = new() {
+                ClientId = clientId,
+                ClientSecret = clientSecret
+            };
+
+            // Exchange the refresh token for a new access token
+            MeetupTokenResponse response = client.GetAccessTokenFromRefreshToken(refreshToken);
+
+            // Set the access token of the OAuth client
+            client.AccessToken = response.Body.AccessToken;
+
+            // Initialize new HTTP service
+            return new MeetupHttpService(client);
+
         }
 
         #endregion

@@ -163,6 +163,35 @@ namespace Skybrud.Social.Meetup.OAuth {
         }
 
         /// <summary>
+        /// Exchanges the specified refresh token for a new access token.
+        /// </summary>
+        /// <param name="refreshToken">The refresh token.</param>
+        /// <returns>An instance of <see cref="MeetupTokenResponse"/> representing the response.</returns>
+        public MeetupTokenResponse GetAccessTokenFromRefreshToken(string refreshToken) {
+
+            // Some validation
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException(nameof(ClientSecret));
+            if (string.IsNullOrWhiteSpace(refreshToken)) throw new ArgumentNullException(nameof(refreshToken));
+
+            // Initialize the query string
+            HttpPostData data = new() {
+                {"client_id", ClientId!},
+                {"client_secret", ClientSecret!},
+                {"grant_type", "refresh_token"},
+                {"refresh_token", refreshToken}
+            };
+
+            // Make the call to the API
+            IHttpResponse response = HttpUtils.Requests
+                .Post("https://secure.meetup.com/oauth2/access", null!, data);
+
+            // Parse the response
+            return MeetupTokenResponse.ParseResponse(response);
+
+        }
+
+        /// <summary>
         /// Updates requests passed through this client - eg. appending an <c>Authorization</c> header when <see cref="AccessToken"/> has a value.
         /// </summary>
         /// <param name="request">The request.</param>
