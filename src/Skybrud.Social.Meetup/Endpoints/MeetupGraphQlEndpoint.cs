@@ -2,7 +2,7 @@
 using Skybrud.Social.Meetup.Options.GraphQl;
 using Skybrud.Social.Meetup.Responses.GraphQl;
 
-namespace Skybrud.Social.Meetup.Endpoints; 
+namespace Skybrud.Social.Meetup.Endpoints;
 
 /// <summary>
 /// Implementation of the <strong>GraphQL</strong> endpoint.
@@ -38,8 +38,8 @@ public class MeetupGraphQlEndpoint {
     /// </summary>
     /// <param name="query">The GraphQL query.</param>
     /// <returns>An instance of <see cref="MeetupGroupResponse"/> representing the response from the API.</returns>
-    public MeetupGroupResponse GetGroupByUrlname(string query) {
-        return GetGroupByUrlname(new MeetupGraphQlOptions(query));
+    public MeetupGroupResponse GetGroupByUrlName(string query) {
+        return GetGroupByUrlName(new MeetupGraphQlOptions(query));
     }
 
     /// <summary>
@@ -48,8 +48,8 @@ public class MeetupGraphQlEndpoint {
     /// <param name="query">The GraphQL query.</param>
     /// <param name="variables">A dictionary with variable to be used with the query.</param>
     /// <returns>An instance of <see cref="MeetupGroupResponse"/> representing the response from the API.</returns>
-    public MeetupGroupResponse GetGroupByUrlname(string query, Dictionary<string, string>? variables) {
-        return GetGroupByUrlname(new MeetupGraphQlOptions(query, variables));
+    public MeetupGroupResponse GetGroupByUrlName(string query, Dictionary<string, string>? variables) {
+        return GetGroupByUrlName(new MeetupGraphQlOptions(query, variables));
     }
 
     /// <summary>
@@ -57,8 +57,8 @@ public class MeetupGraphQlEndpoint {
     /// </summary>
     /// <param name="options">The options for the request to the API.</param>
     /// <returns>An instance of <see cref="MeetupGroupResponse"/> representing the response from the API.</returns>
-    public MeetupGroupResponse GetGroupByUrlname(MeetupGraphQlOptions options) {
-        return new MeetupGroupResponse(Raw.GetGroupByUrlname(options));
+    public MeetupGroupResponse GetGroupByUrlName(MeetupGraphQlOptions options) {
+        return new MeetupGroupResponse(Raw.GetGroupByUrlName(options));
     }
 
     #endregion

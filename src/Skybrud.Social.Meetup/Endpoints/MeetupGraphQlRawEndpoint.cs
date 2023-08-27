@@ -34,8 +34,8 @@ public class MeetupGraphQlRawEndpoint {
     /// </summary>
     /// <param name="query">The GraphQL query.</param>
     /// <returns>An instance of <see cref="IHttpResponse"/> representing the response from the API.</returns>
-    public IHttpResponse GetGroupByUrlname(string query) {
-        return GetGroupByUrlname(new MeetupGraphQlOptions(query));
+    public IHttpResponse GetGroupByUrlName(string query) {
+        return GetGroupByUrlName(new MeetupGraphQlOptions(query));
     }
 
     /// <summary>
@@ -44,8 +44,8 @@ public class MeetupGraphQlRawEndpoint {
     /// <param name="query">The GraphQL query.</param>
     /// <param name="variables">A dictionary with variable to be used with the query.</param>
     /// <returns>An instance of <see cref="IHttpResponse"/> representing the response from the API.</returns>
-    public IHttpResponse GetGroupByUrlname(string query, Dictionary<string, string>? variables) {
-        return GetGroupByUrlname(new MeetupGraphQlOptions(query, variables));
+    public IHttpResponse GetGroupByUrlName(string query, Dictionary<string, string>? variables) {
+        return GetGroupByUrlName(new MeetupGraphQlOptions(query, variables));
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class MeetupGraphQlRawEndpoint {
     /// </summary>
     /// <param name="options">The options for the request to the API.</param>
     /// <returns>An instance of <see cref="IHttpResponse"/> representing the response from the API.</returns>
-    public IHttpResponse GetGroupByUrlname(MeetupGraphQlOptions options) {
+    public IHttpResponse GetGroupByUrlName(MeetupGraphQlOptions options) {
         return Client.GetResponse(options);
     }
 
