@@ -1,6 +1,8 @@
 # Skybrud.Social.Meetup
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Social.Meetup.svg)](https://www.nuget.org/packages/Skybrud.Social.Meetup) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.Meetup.svg)](https://www.nuget.org/packages/Skybrud.Social.Meetup)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Skybrud.Social.Meetup/blob/v1/main/LICENSE.md)
+[![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Social.Meetup.svg)](https://www.nuget.org/packages/Skybrud.Social.Meetup)
+[![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.Meetup.svg)](https://www.nuget.org/packages/Skybrud.Social.Meetup)
 
 **Skybrud.Social.Meetup** is a .NET wrapper and API implementation for the [**Meetup.com API**](https://www.meetup.com/api/).
 
